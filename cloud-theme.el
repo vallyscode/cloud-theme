@@ -13,6 +13,8 @@
 
 ;;; Code:
 
+(require 'haskell-extra-coloring)
+
 (deftheme cloud
   "Cloud light color theme")
 
