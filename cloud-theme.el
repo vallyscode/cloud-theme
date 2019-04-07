@@ -1,22 +1,27 @@
-;;; cloud-theme.el --- A light theme based on Material palette
-
+;;; cloud-theme.el --- A light colored theme -*- lexical-binding: t -*-
+;;
 ;; Copyright (C) 2019 Valerii Lysenko
-
+;;
 ;; Author: Valerii Lysenko <vallyscode@gmail.com>
-;; Keywords: faces theme
+;; Maintainer: Valerii Lysenko <vallyscode@gmail.com>
+;; Keywords: color theme light
 ;; URL: https://github.com/vallyscode/cloud-theme
 ;; Version: 0.1
-
+;;
 ;;; Commentary:
-
-;; Cloud light theme based on Material palette
-
+;;
+;; Cloud is a light theme based on Material palette
+;;
 ;;; Code:
 
 (require 'haskell-extra-coloring)
 
 (deftheme cloud
   "Cloud light color theme")
+
+(defgroup cloud nil
+  "Cloud theme options."
+  :group 'faces)
 
 (let ((class '((class color) (min-colors 89)))
       (cloud-teal-0 "#00796b")
@@ -62,6 +67,10 @@
    `(warning ((,class (:foreground "#ff9800"))))
    `(success ((,class (:foreground "#388e3c"))))
    `(escape-glyph ((,class (:weight bold :foreground "#fdd835"))))
+
+   ;; native line numbers from emacs 26
+   `(line-number ((,class (:background "#eeeeee" :foreground "#9e9e9e"))))
+   `(line-number-current-line ((,class (:background "#eeeeee" :foreground "#af5f00"))))
 
    ;; font lock faces
    `(font-lock-builtin-face ((,class (:foreground "#7e57c2"))))
