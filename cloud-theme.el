@@ -69,15 +69,21 @@
    `(font-lock-comment-face ((,class (:slant italic :weight normal :foreground "#9e9e9e"))))
    `(font-lock-constant-face ((,class (:foreground "#b71c1c"))))
    `(font-lock-doc-face ((,class (:foreground "#9e9e9e"))))
-   `(font-lock-function-name-face ((,class (:foreground "#006699"))))
-   `(font-lock-keyword-face ((,class (:bold nil :foreground "#005073"))))
-   `(font-lock-preprocessor-face ((,class (:slant italic :foreground "#b39ddb"))))
+   `(font-lock-function-name-face ((,class (:foreground "#424242"))))
+   `(font-lock-keyword-face ((,class (:weight bold :foreground "#005073"))))
+   `(font-lock-preprocessor-face ((,class (:foreground "#673ab7"))))
    `(font-lock-regexp-grouping-backslash ((,class (:weight bold :inherit nil))))
    `(font-lock-regexp-grouping-construct ((,class (:weight bold :inherit nil))))
    `(font-lock-string-face ((,class (:foreground "#388e3c"))))
-   `(font-lock-type-face ((,class (:weight normal :foreground "#107dac"))))
+   `(font-lock-type-face ((,class (:weight bold :foreground "#107dac"))))
    `(font-lock-variable-name-face ((,class (:weight normal :foreground "#424242"))))
    `(font-lock-warning-face ((,class (:weight bold :foreground "#ff9800"))))
+
+   ;; haskell
+   `(haskell-pragma-face ((,class (:foreground "#673ab7"))))
+   `(haskell-keyword-face ((,class (:foreground "#005073"))))
+   `(haskell-operator-face ((,class (:foreground "#d70087"))))
+   `(haskell-type-face ((,class (:weight bold :foreground "#107dac"))))
 
    ;; UI
    `(button ((,class (:underline t :foreground "#006699"))))

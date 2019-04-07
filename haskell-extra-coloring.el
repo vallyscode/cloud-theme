@@ -13,8 +13,8 @@
 ;;; Code:
 
 ;;;###autoload
-(font-lock-add-keywords 'haskell-mode '(("\\_<\\(qualified\\|as\\)\\_>" . font-lock-builtin-face)
-                                        ("\\_<\\(undefined\\)\\_>" 1 font-lock-constant-face)))
+;; (font-lock-add-keywords 'haskell-mode '(("\\_<\\(qualified\\|as\\)\\_>" . font-lock-builtin-face)
+;;                                         ("\\_<\\(undefined\\)\\_>" 1 font-lock-constant-face)))
 
 (provide 'haskell-extra-coloring)
 
