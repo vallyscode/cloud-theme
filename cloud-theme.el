@@ -58,21 +58,32 @@
 
   (custom-theme-set-faces
    'cloud
-
-   ;; Base
-   `(bold ((,class (:weight bold))))
-   `(bold-italic ((,class (:weight bold :slant italic))))
    `(default ((,class (:foreground "#424242" :background "#eeeeee"))))
-   `(error ((,class (:foreground "#e57373"))))
-   `(warning ((,class (:foreground "#ff9800"))))
-   `(success ((,class (:foreground "#388e3c"))))
-   `(escape-glyph ((,class (:weight bold :foreground "#fdd835"))))
+   `(cursor ((,class (:foreground "#eeeeee" :background "#006699"))))
+
+   ;; highlight
+   `(fringe ((,class (:background "#eeeeee"))))
+   `(border ((,class (:foreground "#005073"))))
+   `(vertical-border ((,class (:foreground "#005073"))))
+   `(highlight ((,class (:background "#fff176"))))
+   `(region ((,class (:background "#107dac" :foreground "#eeeeee"))))
+   `(secondary-selection ((,class (:weight bold :background "#fff176"))))
+   `(isearch ((,class (:foreground "#eeeeee" :background "#107dac"))))
+   `(lazy-highlight ((,class (:foreground "#424242" :background "#fff176")))) ; Isearch others (see `match').
+   `(hl-line ((,class (:background "#e4e4e4"))));; highlight current line
+   `(shadow ((,class ((:foreground "#9e9e9e")))))
+   `(match ((,class (:weight bold :background "#fff176"))))
 
    ;; native line numbers from emacs 26
    `(line-number ((,class (:background "#eeeeee" :foreground "#9e9e9e"))))
-   `(line-number-current-line ((,class (:background "#eeeeee" :foreground "#af5f00"))))
+   `(line-number-current-line ((,class (:weight bold :background "#eeeeee" :foreground "#af5f00"))))
 
-   ;; font lock faces
+   ;; linum
+   `(linum ((,class (:background "#eeeeee" :foreground "#9e9e9e"))))
+   ;; hlinum
+   `(linum-highlight-face ((,class (:background "#eeeeee" :foreground "#9e9e9e"))))
+
+   ;; font lock
    `(font-lock-builtin-face ((,class (:foreground "#7e57c2"))))
    `(font-lock-comment-delimiter-face ((,class (:weight normal :foreground "#9e9e9e"))))
    `(font-lock-comment-face ((,class (:slant italic :weight normal :foreground "#9e9e9e"))))
@@ -88,6 +99,28 @@
    `(font-lock-variable-name-face ((,class (:weight normal :foreground "#424242"))))
    `(font-lock-warning-face ((,class (:weight bold :foreground "#ff9800"))))
 
+   ;; mode line
+   `(mode-line ((,class (:background "#006699" :foreground "#eeeeee" :box (:line-width 1 :color "#006699")))))
+   `(mode-line-inactive ((,class (:background "#e0e0e0" :foreground "#444444" :box (:line-width 1 :color "#bdbdbd")))))
+   `(mode-line-buffer-id ((,class (:weight bold))))
+   `(mode-line-emphasis ((,class (:foreground "#eeeeee"))))
+   `(mode-line-highlight ((,class (:foreground "#fff176"))))
+   `(header-line ((,class (:background "#006699" :foreground "#eeeeee" :box (:line-width 1 :color "#006699")))))
+
+   ;; error and success
+   `(error ((,class (:weight bold :foreground "#e57373"))))
+   `(warning ((,class (:weight bold :foreground "#ff9800"))))
+   `(success ((,class (:weight bold :foreground "#388e3c"))))
+
+   ;; escape and prompt
+   `(minibuffer-prompt ((,class (:weight bold :foreground "#006699"))))
+   `(minibuffer-noticeable-prompt ((,class (:weight bold :foreground "#006699"))))
+   `(escape-glyph ((,class (:weight bold :foreground "#fdd835"))))
+
+   ;; Base
+   `(bold ((,class (:weight bold))))
+   `(bold-italic ((,class (:weight bold :slant italic))))
+
    ;; haskell
    `(haskell-pragma-face ((,class (:foreground "#673ab7"))))
    `(haskell-keyword-face ((,class (:foreground "#005073"))))
@@ -96,26 +129,12 @@
 
    ;; UI
    `(button ((,class (:underline t :foreground "#006699"))))
-   `(cursor ((,class (:foreground "#eeeeee" :background "#006699"))))
-   `(fringe ((,class (:background "#eeeeee"))))
-   `(header-line ((,class (:background "#006699" :foreground "#eeeeee" :box (:line-width 1 :color "#006699")))))
    `(help-argument-name ((,class (:foreground "#006699"))))
-   `(highlight ((,class (:background "#fff176"))))
-   `(hl-line ((,class (:background "#e4e4e4"))));; highlight current line
    `(info-menu-star ((,class (:foreground "#006699"))))
-   `(isearch ((,class (:foreground "#eeeeee" :background "#107dac"))))
    `(isearch-fail ((,class (:weight bold :foreground "#eeeeee" :background "#e57373"))))
    `(link ((,class (:underline t :foreground "#107dac"))))
    `(link-visited ((,class (:underline t :foreground "#7e57c2"))))
    `(linum ((,class (:background "#eeeeee" :foreground "#9e9e9e"))))
-   `(match ((,class (:weight bold :background "#fff176"))))
-   `(minibuffer-prompt ((,class (:weight bold :foreground "#006699"))))
-   `(minibuffer-noticeable-prompt ((,class (:weight bold :foreground "#006699"))))
-   `(mode-line ((,class (:background "#006699" :foreground "#eeeeee" :box (:line-width 1 :color "#006699")))))
-   `(mode-line-inactive ((,class (:background "#e0e0e0" :foreground "#444444" :box (:line-width 1 :color "#bdbdbd")))))
-   `(mode-line-buffer-id ((,class (:weight bold))))
-   `(mode-line-emphasis ((,class (:foreground "#eeeeee"))))
-   `(mode-line-highlight ((,class (:foreground "#fff176"))))
    `(next-error ((,class (:inherit error))))
    `(nobreak-space ((,class (:background "#cfd8dc"))))
    `(outline-1 ((,class (:height 1.0 :weight bold :foreground "#107dac"))))
@@ -127,13 +146,9 @@
    `(outline-7 ((,class (:inherit outline-1))))
    `(outline-8 ((,class (:inherit outline-1))))
    `(query-replace ((,class (:inherit isearch))))
-   `(region ((,class (:background "#107dac" :foreground "#eeeeee"))))
-   `(lazy-highlight ((,class (:foreground "#424242" :background "#fff176")))) ; Isearch others (see `match').
-   `(secondary-selection ((,class (:weight bold :background "#fff176"))))
    `(show-paren-match ((,class (:background "#bdbdbd" :foreground "#006699"))))
    `(show-paren-mismatch ((,class (:background "#bdbdbd" :foreground "#b71c1c"))))
    `(trailing-whitespace ((,class (:foreground "#bdbdbd" :background "#fff176"))))
-   `(vertical-border ((,class (:foreground "#005073"))))
    `(whitespace-hspace ((,class (:foreground "#bdbdbd"))))
    `(whitespace-indentation ((,class (:background nil :foreground "#424242"))))
    `(whitespace-line ((,class (:foreground "#e57373" :background "#eeeeee"))))
