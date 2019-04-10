@@ -117,38 +117,7 @@
    `(minibuffer-noticeable-prompt ((,class (:weight bold :foreground "#006699"))))
    `(escape-glyph ((,class (:weight bold :foreground "#fdd835"))))
 
-   ;; Base
-   `(bold ((,class (:weight bold))))
-   `(bold-italic ((,class (:weight bold :slant italic))))
-
-   ;; haskell
-   `(haskell-pragma-face ((,class (:foreground "#673ab7"))))
-   `(haskell-keyword-face ((,class (:foreground "#005073"))))
-   `(haskell-operator-face ((,class (:foreground "#d70087"))))
-   `(haskell-type-face ((,class (:weight bold :foreground "#107dac"))))
-
-   ;; UI
-   `(button ((,class (:underline t :foreground "#006699"))))
-   `(help-argument-name ((,class (:foreground "#006699"))))
-   `(info-menu-star ((,class (:foreground "#006699"))))
-   `(isearch-fail ((,class (:weight bold :foreground "#eeeeee" :background "#e57373"))))
-   `(link ((,class (:underline t :foreground "#107dac"))))
-   `(link-visited ((,class (:underline t :foreground "#7e57c2"))))
-   `(linum ((,class (:background "#eeeeee" :foreground "#9e9e9e"))))
-   `(next-error ((,class (:inherit error))))
-   `(nobreak-space ((,class (:background "#cfd8dc"))))
-   `(outline-1 ((,class (:height 1.0 :weight bold :foreground "#107dac"))))
-   `(outline-2 ((,class (:inherit outline-1))))
-   `(outline-3 ((,class (:inherit outline-1))))
-   `(outline-4 ((,class (:inherit outline-1))))
-   `(outline-5 ((,class (:inherit outline-1))))
-   `(outline-6 ((,class (:inherit outline-1))))
-   `(outline-7 ((,class (:inherit outline-1))))
-   `(outline-8 ((,class (:inherit outline-1))))
-   `(query-replace ((,class (:inherit isearch))))
-   `(show-paren-match ((,class (:background "#bdbdbd" :foreground "#006699"))))
-   `(show-paren-mismatch ((,class (:background "#bdbdbd" :foreground "#b71c1c"))))
-   `(trailing-whitespace ((,class (:foreground "#bdbdbd" :background "#fff176"))))
+   ;; whitespace
    `(whitespace-hspace ((,class (:foreground "#bdbdbd"))))
    `(whitespace-indentation ((,class (:background nil :foreground "#424242"))))
    `(whitespace-line ((,class (:foreground "#e57373" :background "#eeeeee"))))
@@ -158,20 +127,13 @@
    `(window-divider-first-pixel ((,class (:background "#005073"))))
    `(window-divider-last-pixel ((,class (:background "#005073"))))
 
-   ;; company
-   `(company-tooltip-common-selection ((,class (:weight normal :foreground "#eeeeee"))))
-   `(company-tooltip-selection ((,class (:weight normal :foreground "#eeeeee" :background "#006699"))))
-   `(company-tooltip-annotation-selection ((,class (:weight normal :foreground "eeeeee"))))
-   `(company-tooltip-common ((,class (:weight bold))))
-   `(company-tooltip ((,class (:foreground "#424242" :background "#cfd8dc"))))
-   `(company-tooltip-annotation ((,class (:weight normal :foreground "#b39ddb"))))
-   `(company-preview-common ((,class (:weight normal :foreground "#107dac" :inherit hl-line))))
-   `(company-scrollbar-bg ((,class (:background "#cfd8dc"))))
-   `(company-scrollbar-fg ((,class (:background "#607D8B"))))
+   ;; link
+   `(link ((,class (:underline t :foreground "#107dac"))))
+   `(link-visited ((,class (:underline t :foreground "#7e57c2"))))
 
    ;; dired
-   `(dired-directory ((,class (:weight normal :foreground "#005f87" :background "#eeeeee"))))
    `(dired-header ((,class (:weight normal :foreground "#005f87" :background "#eeeeee"))))
+   `(dired-directory ((,class (:weight normal :foreground "#005f87" :background "#eeeeee"))))
    `(dired-ignored ((,class (:strike-through t :foreground "#af0000"))))
    `(dired-mark ((,class (:foreground "#af0000" :background "#e5786d"))))
    `(dired-marked ((,class (:foreground "#af0000" :background "#e5786d"))))
@@ -189,6 +151,58 @@
    `(diredp-ignored-file-name ((,class (:foreground "#7F7F7F"))))
    `(diredp-read-priv ((,class (:background "#107dac"))))
    `(diredp-write-priv ((,class (:foreground "white" :background "#e57373"))))
+
+   ;; diff
+   `(diff-added ((,class (:background "#eeeeee" :foreground "#388e3c"))))
+   `(diff-removed ((,class (:background "#eeeeee" :foreground "#e57373"))))
+   `(diff-refine-added ((,class (:slant italic :weight bold :foreground "#388e3c"))))
+   `(diff-refine-removed ((,class (:slant italic :weight bold :foreground "#e57373"))))
+   `(diff-changed ((,class (:foreground "#005073" :background "#107dac"))))
+   `(diff-header ((,class (:foreground "#424242" :background "#eeeeee"))))
+   `(diff-file-header ((,class (:foreground "#424242" :background "#eeeeee"))))
+   `(diff-indicator-added ((,class (:foreground "#388e3c"))))
+   `(diff-indicator-removed ((,class (:foreground "#e57373"))))
+   `(diff-hunk-header ((,class (:foreground "#673ab7" :background "#eeeeee"))))
+   `(diff-none ((,class (:foreground "#424242"))))
+
+   ;; haskell
+   `(haskell-pragma-face ((,class (:foreground "#673ab7"))))
+   `(haskell-keyword-face ((,class (:foreground "#005073"))))
+   `(haskell-operator-face ((,class (:foreground "#d70087"))))
+   `(haskell-type-face ((,class (:weight bold :foreground "#107dac"))))
+
+   ;; UI
+   `(button ((,class (:underline t :foreground "#006699"))))
+   `(help-argument-name ((,class (:foreground "#006699"))))
+   `(info-menu-star ((,class (:foreground "#006699"))))
+   `(isearch-fail ((,class (:weight bold :foreground "#eeeeee" :background "#e57373"))))
+   `(linum ((,class (:background "#eeeeee" :foreground "#9e9e9e"))))
+   `(next-error ((,class (:inherit error))))
+   `(nobreak-space ((,class (:background "#cfd8dc"))))
+   `(outline-1 ((,class (:height 1.0 :weight bold :foreground "#107dac"))))
+   `(outline-2 ((,class (:inherit outline-1))))
+   `(outline-3 ((,class (:inherit outline-1))))
+   `(outline-4 ((,class (:inherit outline-1))))
+   `(outline-5 ((,class (:inherit outline-1))))
+   `(outline-6 ((,class (:inherit outline-1))))
+   `(outline-7 ((,class (:inherit outline-1))))
+   `(outline-8 ((,class (:inherit outline-1))))
+   `(query-replace ((,class (:inherit isearch))))
+   `(show-paren-match ((,class (:background "#bdbdbd" :foreground "#006699"))))
+   `(show-paren-mismatch ((,class (:background "#bdbdbd" :foreground "#b71c1c"))))
+   `(trailing-whitespace ((,class (:foreground "#bdbdbd" :background "#fff176"))))
+
+   ;; company
+   `(company-tooltip-common-selection ((,class (:weight normal :foreground "#eeeeee"))))
+   `(company-tooltip-selection ((,class (:weight normal :foreground "#eeeeee" :background "#006699"))))
+   `(company-tooltip-annotation-selection ((,class (:weight normal :foreground "eeeeee"))))
+   `(company-tooltip-common ((,class (:weight bold))))
+   `(company-tooltip ((,class (:foreground "#424242" :background "#cfd8dc"))))
+   `(company-tooltip-annotation ((,class (:weight normal :foreground "#b39ddb"))))
+   `(company-preview-common ((,class (:weight normal :foreground "#107dac" :inherit hl-line))))
+   `(company-scrollbar-bg ((,class (:background "#cfd8dc"))))
+   `(company-scrollbar-fg ((,class (:background "#607D8B"))))
+
    `(eldoc-highlight-function-argument ((,class (:foreground "#388e3c" :weight bold))))
 
    `(file-name-shadow ((,class (:foreground "#7F7F7F"))))
