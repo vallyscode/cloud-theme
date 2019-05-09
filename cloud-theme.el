@@ -308,14 +308,14 @@
    `(outline-8 ((,class (:inherit outline-1))))
 
    ;; org
-   `(org-level-1 ((,class (:height 1.0 :weight bold :foreground "#008abd"))))
-   `(org-level-2 ((,class (:height 1.0 :weight bold :foreground "#7d57c2"))))
-   `(org-level-3 ((,class (:height 1.0 :weight bold :foreground "#ff9419"))))
-   `(org-level-4 ((,class (:height 1.0 :weight bold :foreground "#678f03"))))
-   `(org-level-5 ((,class (:height 1.0 :weight bold :foreground "#00afff"))))
-   `(org-level-6 ((,class (:height 1.0 :weight bold :foreground "#089ea1"))))
-   `(org-level-7 ((,class (:height 1.0 :weight bold :foreground "#E67373"))))
-   `(org-level-8 ((,class (:height 1.0 :weight bold :foreground "#22aa22"))))
+   `(org-level-1 ((,class (:height 1.3 :weight bold :foreground "#008abd"))))
+   `(org-level-2 ((,class (:height 1.3 :weight bold :foreground "#7d57c2"))))
+   `(org-level-3 ((,class (:height 1.3 :weight bold :foreground "#cc6d00"))))
+   `(org-level-4 ((,class (:height 1.3 :weight bold :foreground "#678f03"))))
+   `(org-level-5 ((,class (:height 1.3 :weight bold :foreground "#00638a"))))
+   `(org-level-6 ((,class (:height 1.3 :weight bold :foreground "#E67373"))))
+   `(org-level-7 ((,class (:height 1.3 :weight bold :foreground "#089ea1"))))
+   `(org-level-8 ((,class (:height 1.3 :weight bold :foreground "#00638a"))))
 
    `(org-block ((,class (:background "#f2f2f2"))))
    `(org-block-background ((,class (:background "#f2f2f2"))))
