@@ -1,154 +1,161 @@
 ;;; cloud-theme.el --- A light colored theme -*- lexical-binding: t -*-
-;;
+
 ;; Copyright (C) 2019 Valerii Lysenko
-;;
+
 ;; Author: Valerii Lysenko <vallyscode@gmail.com>
 ;; Maintainer: Valerii Lysenko <vallyscode@gmail.com>
 ;; Keywords: color theme light
 ;; URL: https://github.com/vallyscode/cloud-theme
 ;; Version: 0.1
-;;
+;; Package: cloud-theme
+;; Package-Requires: ()
+
 ;;; Commentary:
+
+;; To use it, put the following in your Emacs configuration file:
 ;;
-;; Cloud is a light theme based on Material palette
+;;   (load-theme 'cloud t)
 ;;
+
 ;;; Code:
 
-(require 'haskell-extra-coloring)
+;; Palette:
+;; #00638a
+;; #008abc
+;; #7c56c1
+;; #5e8302
+;; #388e3c
+;; #22aa22
+;; #2e994c
+;; #ddffdd
+;; #cceecc
+;; #c00000
+;; #e00000
+;; #ffdddd
+;; #eecccc
+;; #c06600
+;; #f38e00
+;; #eec931
+;; #f0d97a
+;; #eeeeee
+;; #e0e0e0
+;; #d0d0d0
+;; #c0c0c0
+;; #a0a0a0
+;; #8c8c8c
+;; #4d4d4d
+;; #009688
+
+;; #00afff
+;; #8d66fe
+;; #42c2f8
+;; #ffdddd
+;; #D0372D
+;; #008080
+;; #F38630
+;; #eeeeee
+;; #e5e5e5
+;; #c0c0c0
+
+
+;; #089ea1
+;; #699bae
+;; #8dd0eb
+;; #5ec3eb
+;; #3b9dc4
+;; #3793B8
+;; #005270
+;; #20566B
+;; #006c96
+;; #00638a
+;; #286a85
+;; #2c7591
+;; #2f7e9d
+;; #2f7f9e
+;; #2f7f9e
+;; #3389ab
+;; #008abc
+;; #008abd
+;; #0087bf
+;; #1171AD
+;; #075E94
+;; #005173
+;; #fffbc4
+;; #f0f0d8
+;; #f8f1d3
+;; #a8b3ba
+;; #919aa1
+;; #81a18a
+;; #74917d
+;; #aebaa8
+;; #b4efb4
+;; #ededed
+;; #838c91
+;; #6c7378
+;; #cccccc
+;; #d1d1d1
+;; #d4d4d4
+;; #f2f2f2
+;; #454545
+;; #ad0000
+;; #c70000
+;; #ed0000
+;; #ff1919
+;; #ffdddd
+;; #bf6600
+;; #bf7000
+;; #cc6d00
+;; #ff9419
+;; #f4ad49
+;; #6c4ca8
+;; #7d57c2
+;; #7c56c1
+;; #855dcf
+;; #b48cff
+;; #5e8203
+;; #678f03
+;; #7a9730
+;; #a7cf42
+;; #95cf04
+;; #E67373
+;; #FF9999
+;; #993D3D
+;; #2e994c
+;; #73E693
+;; #6DB347
+;; #AFE9AF
+;; #4E7F33
+;; #6DB347
+;; #CDFFB3
 
 (deftheme cloud "Cloud light color theme")
 
 (defgroup cloud nil "Cloud theme options."
   :group 'faces)
 
-(let ((class '((class color) (min-colors 89)))
-      ;; #00638a
-      ;; #008abc
-      ;; #7c56c1
-      ;; #5e8302
-      ;; #388e3c
-      ;; #22aa22
-      ;; #ddffdd
-      ;; #cceecc
-      ;; #c00000
-      ;; #e00000
-      ;; #ffdddd
-      ;; #eecccc
-      ;; #c06600
-      ;; #f38e00
-      ;; #eec931
-      ;; #eeeeee
-      ;; #e0e0e0
-      ;; #d0d0d0
-      ;; #c0c0c0
-      ;; #a0a0a0
-      ;; #8c8c8c
-      ;; #4d4d4d
-      ;; #009688
-
-      ;; #00afff
-      ;; #8d66fe
-      ;; #42c2f8
-      ;; #ffdddd
-      ;; #D0372D
-      ;; #008080
-      ;; #F38630
-      ;; #eeeeee
-      ;; #e5e5e5
-      ;; #c0c0c0
-
-
-      ;; #089ea1
-      ;; #699bae
-      ;; #8dd0eb
-      ;; #5ec3eb
-      ;; #3b9dc4
-      ;; #3793B8
-      ;; #005270
-      ;; #20566B
-      ;; #006c96
-      ;; #00638a
-      ;; #286a85
-      ;; #2c7591
-      ;; #2f7e9d
-      ;; #2f7f9e
-      ;; #2f7f9e
-      ;; #3389ab
-      ;; #008abc
-      ;; #008abd
-      ;; #0087bf
-      ;; #1171AD
-      ;; #075E94
-      ;; #005173
-      ;; #fffbc4
-      ;; #f0f0d8
-      ;; #a8b3ba
-      ;; #919aa1
-      ;; #81a18a
-      ;; #74917d
-      ;; #aebaa8
-      ;; #b4efb4
-      ;; #ededed
-      ;; #838c91
-      ;; #6c7378
-      ;; #cccccc
-      ;; #d1d1d1
-      ;; #d4d4d4
-      ;; #f2f2f2
-      ;; #454545
-      ;; #ad0000
-      ;; #c70000
-      ;; #ed0000
-      ;; #ff1919
-      ;; #ffdddd
-      ;; #bf6600
-      ;; #bf7000
-      ;; #cc6d00
-      ;; #ff9419
-      ;; #f4ad49
-      ;; #6c4ca8
-      ;; #7d57c2
-      ;; #7c56c1
-      ;; #855dcf
-      ;; #b48cff
-      ;; #5e8203
-      ;; #678f03
-      ;; #7a9730
-      ;; #a7cf42
-      ;; #95cf04
-      ;; #E67373
-      ;; #FF9999
-      ;; #993D3D
-      ;; #2e994c
-      ;; #73E693
-      ;; #6DB347
-      ;; #AFE9AF
-      ;; #4E7F33
-      ;; #6DB347
-      ;; #CDFFB3
-      )
+(let ((class '((class color) (min-colors 89))))
 
   (custom-theme-set-faces
    'cloud
    `(default ((,class (:background "#f2f2f2" :foreground "#454545"))))
 
    ;; highlight
-   `(cursor ((,class (:background "#2f7e9d" :foreground "#f2f2f2" ))))
+   `(cursor ((,class (:background "#006c96" :foreground "#f2f2f2" ))))
    `(fringe ((,class (:background "#f2f2f2" :foreground "#454545"  ))))
    `(border ((,class (:foreground "#2f7e9d"))))
    `(vertical-border ((,class (:foreground "#2f7e9d"))))
    `(highlight ((,class (:background "#fffbc4"))))
    `(region ((,class (:background "#008abd" :foreground "#f2f2f2"))))
    `(secondary-selection ((,class (:weight bold :background "#fffbc4"))))
-   `(isearch ((,class (:foreground "#f2f2f2" :background "#3389ab"))))
-   `(isearch-fail ((,class (:weight bold :foreground "#f2f2f2" :background "#ff1919"))))
+   `(isearch ((,class (:foreground "#f2f2f2" :background "#008abd"))))
+   `(isearch-fail ((,class (:weight bold :foreground "#f2f2f2" :background "#d0372d"))))
    `(query-replace ((,class (:inherit isearch))))
    `(lazy-highlight ((,class (:foreground "#454545" :background "#fffbc4")))) ; Isearch others (see `match').
    `(hl-line ((,class (:background "#ededed"))))
    `(shadow ((,class ((:foreground "#cccccc")))))
    `(match ((,class (:weight bold :background "#fffbc4"))))
    `(show-paren-match ((,class (:background "#cccccc" :foreground "#2f7e9d"))))
-   `(show-paren-mismatch ((,class (:background "#cccccc" :foreground "#ed0000"))))
+   `(show-paren-mismatch ((,class (:background "#cccccc" :foreground "#d0372d"))))
    `(trailing-whitespace ((,class (:foreground "#cccccc" :background "#fffbc4"))))
 
    ;; UI
@@ -156,7 +163,7 @@
    `(help-argument-name ((,class (:foreground "#2f7e9d"))))
    `(info-menu-star ((,class (:foreground "#2f7e9d"))))
    `(next-error ((,class (:inherit error))))
-   `(nobreak-space ((,class (:background "#cfd8dc"))))
+   `(nobreak-space ((,class (:background "#b48cff"))))
    `(file-name-shadow ((,class (:foreground "#cccccc"))))
 
    ;; native line numbers from emacs 26
@@ -170,20 +177,20 @@
    `(linum-highlight-face ((,class (:background "#f2f2f2" :foreground "#8c8c8c"))))
 
    ;; font lock
-   `(font-lock-builtin-face ((,class (:foreground "#855dcf"))))
+   `(font-lock-builtin-face ((,class (:foreground "#7d57c2"))))
    `(font-lock-comment-delimiter-face ((,class (:weight normal :foreground "#8c8c8c"))))
    `(font-lock-comment-face ((,class (:slant italic :weight normal :foreground "#8c8c8c"))))
    `(font-lock-constant-face ((,class (:foreground "#008080"))))
    `(font-lock-doc-face ((,class (:slant italic :weight normal :foreground "#678f03"))))
    `(font-lock-function-name-face ((,class (:foreground "#454545"))))
-   `(font-lock-keyword-face ((,class (:weight bold :foreground "#2f7e9d"))))
-   `(font-lock-preprocessor-face ((,class (:foreground "#855dcf"))))
+   `(font-lock-keyword-face ((,class (:weight bold :foreground "#00638a"))))
+   `(font-lock-preprocessor-face ((,class (:foreground "#7d57c2"))))
    `(font-lock-regexp-grouping-backslash ((,class (:weight bold :inherit nil))))
    `(font-lock-regexp-grouping-construct ((,class (:weight bold :inherit nil))))
    `(font-lock-string-face ((,class (:foreground "#678f03"))))
    `(font-lock-type-face ((,class (:weight bold :foreground "#008abd"))))
    `(font-lock-variable-name-face ((,class (:weight normal :foreground "#454545"))))
-   `(font-lock-warning-face ((,class (:weight bold :foreground "#f4ad49"))))
+   `(font-lock-warning-face ((,class (:weight bold :foreground "#cc6d00"))))
 
    ;; mode line
    `(mode-line ((,class (:background "#2f7e9d" :foreground "#f2f2f2" :box (:line-width 1 :color "#2f7e9d")))))
@@ -194,7 +201,7 @@
    `(header-line ((,class (:background "#2f7e9d" :foreground "#f2f2f2" :box (:line-width 1 :color "#2f7e9d")))))
 
    ;; error/warning/success
-   `(error ((,class (:weight bold :foreground "#ed0000"))))
+   `(error ((,class (:weight bold :foreground "#d0372d"))))
    `(warning ((,class (:weight bold :foreground "#cc6d00"))))
    `(success ((,class (:weight bold :foreground "#2e994c"))))
 
@@ -214,29 +221,29 @@
    `(window-divider-last-pixel ((,class (:background "#2f7e9d"))))
 
    ;; link
-   `(link ((,class (:underline t :foreground "#008abd"))))
-   `(link-visited ((,class (:underline t :foreground "#7d57c2"))))
+   `(link ((,class (:underline t :foreground "#006c96"))))
+   `(link-visited ((,class (:underline t :foreground "#6c4ca8"))))
 
    ;; dired
-   `(dired-header ((,class (:weight bold :foreground "#008abd" :background "#f2f2f2"))))
-   `(dired-directory ((,class (:weight bold :foreground "#008abd" :background "#f2f2f2"))))
-   `(dired-ignored ((,class (:strike-through t :foreground "#e67373"))))
-   `(dired-mark ((,class (:foreground "#e67373" :background "#f2f2f2"))))
-   `(dired-marked ((,class (:foreground "#e67373" :background "#ffdddd"))))
+   `(dired-header ((,class (:weight bold :foreground "#2f7e9d" :background "#f2f2f2"))))
+   `(dired-directory ((,class (:weight bold :foreground "#2f7e9d" :background "#f2f2f2"))))
+   `(dired-ignored ((,class (:strike-through t :foreground "#D0372D"))))
+   `(dired-mark ((,class (:foreground "#D0372D" :background "#f2f2f2"))))
+   `(dired-marked ((,class (:foreground "#D0372D" :background "#ffdddd"))))
    `(dired-symlink ((,class (:foreground "#855dcf"))))
 
    ;; diff
    `(diff-added ((,class (:background "#ddffdd" :foreground "#2e994c"))))
-   `(diff-removed ((,class (:background "#ffdddd" :foreground "#c70000"))))
-   `(diff-changed ((,class (:background "#008abd" :foreground "#2f7e9d"))))
-   `(diff-refine-added ((,class (:background "#ddffdd"))))
-   `(diff-refine-removed ((,class (:background "#ffdddd"))))
-   `(diff-refine-changed ((,class (:background "#008abd"))))
+   `(diff-removed ((,class (:background "#ffdddd" :foreground "#d0372d"))))
+   `(diff-changed ((,class (:background "#f8f1d3" :foreground "#bf7000"))))
+   `(diff-refine-added ((,class (:background "#cceecc"))))
+   `(diff-refine-removed ((,class (:background "#eecccc"))))
+   `(diff-refine-changed ((,class (:background "#fce8c9"))))
    `(diff-header ((,class (:foreground "#8c8c8c" :background "#f2f2f2"))))
    `(diff-file-header ((,class (:foreground "#2f7e9d" :background "#f2f2f2"))))
    `(diff-indicator-added ((,class (:foreground "#2e994c" :background "#ddffdd"))))
-   `(diff-indicator-removed ((,class (:foreground "#c70000" :background "#ffdddd"))))
-   `(diff-indicator-changed ((,class (:foreground "#2f7e9d" :background "#008abd"))))
+   `(diff-indicator-removed ((,class (:foreground "#d0372d" :background "#ffdddd"))))
+   `(diff-indicator-changed ((,class (:foreground "#bf7000" :background "#f8f1d3"))))
    `(diff-hunk-header ((,class (:foreground "#7d57c2" :background "#f2f2f2"))))
    `(diff-none ((,class (:foreground "#454545"))))
 
@@ -247,12 +254,12 @@
    `(company-tooltip-common ((,class (:weight bold))))
    `(company-tooltip ((,class (:foreground "#454545" :background "#cccccc"))))
    `(company-tooltip-annotation ((,class (:weight normal :foreground "#7d57c2"))))
-   `(company-preview-common ((,class (:weight normal :foreground "#008abd" :inherit hl-line))))
+   `(company-preview-common ((,class (:weight normal :foreground "#2f7e9d" :inherit hl-line))))
    `(company-scrollbar-bg ((,class (:background "#cccccc"))))
    `(company-scrollbar-fg ((,class (:background "#8c8c8c"))))
 
    ;; eldoc
-   `(eldoc-highlight-function-argument ((,class (:foreground "#5e8203" :weight bold))))
+   `(eldoc-highlight-function-argument ((,class (:foreground "#008abd" :weight bold))))
 
    ;; haskell
    `(haskell-pragma-face ((,class (:foreground "#7d57c2"))))
@@ -266,12 +273,12 @@
    ;; flycheck
    `(flycheck-info ((,class (:underline (:color "#2e994c" :style wave) :weight bold))))
    `(flycheck-warning ((,class (:underline (:color "#cc6d00" :style wave) :weight bold))))
-   `(flycheck-error ((,class (:underline (:color "#ed0000" :style wave) :weight bold))))
+   `(flycheck-error ((,class (:underline (:color "#D0372D" :style wave) :weight bold))))
    `(flycheck-fringe-info ((,class (:foreground "#2e994c"))))
    `(flycheck-fringe-warning ((,class (:foreground "#cc6d00"))))
-   `(flycheck-fringe-error ((,class (:foreground "#ed0000"))))
+   `(flycheck-fringe-error ((,class (:foreground "#D0372D"))))
    `(flycheck-warning ((,class (:underline (:color "#cc6d00" :style wave)))))
-   `(flycheck-error ((,class (:underline (:color "#ed0000" :style wave)))))
+   `(flycheck-error ((,class (:underline (:color "#D0372D" :style wave)))))
    `(flycheck-error-list-line-number ((,class (:foreground "#7d57c2"))))
 
    ;; helm
@@ -284,12 +291,12 @@
    `(helm-selection ((,class (:background "#f2f2f2"))))
    `(helm-selection-line ((,class (:background "#f2f2f2"))))
    `(helm-separator ((,class (:foreground "#454545"))))
-   `(helm-visible-mark ((,class (:foreground "#e57373" :background "#ffdddd"))))
+   `(helm-visible-mark ((,class (:foreground "#D0372D" :background "#ffdddd"))))
    `(helm-buffer-directory ((,class (:foreground "#008abd" :weight bold))))
    `(helm-buffer-file ((,class (:foreground "#454545"))))
    `(helm-buffer-not-saved ((,class (:foreground "#f4ad49"))))
-   `(helm-buffer-process ((,class (:foreground "#e57373"))))
-   `(helm-buffer-saved-out ((,class (:foreground "#e57373"))))
+   `(helm-buffer-process ((,class (:foreground "#D0372D"))))
+   `(helm-buffer-saved-out ((,class (:foreground "#D0372D"))))
    `(helm-buffer-size ((,class (:foreground "#f4ad49"))))
    `(helm-candidate-number ((,class (:foreground "#f2f2f2" :background "#008abd"))))
    `(helm-ff-directory ((,class (:foreground "#008abd" :weight bold))))
@@ -298,24 +305,25 @@
    `(helm-ff-invalid-symlink ((,class (:foreground "#7d57c2" :background "#ffdddd"))))
    `(helm-ff-symlink ((,class (:foreground "#7d57c2"))))
 
+   ;; Outline
    `(outline-1 ((,class (:height 1.0 :weight bold :foreground "#008abd"))))
-   `(outline-2 ((,class (:inherit outline-1))))
-   `(outline-3 ((,class (:inherit outline-1))))
-   `(outline-4 ((,class (:inherit outline-1))))
-   `(outline-5 ((,class (:inherit outline-1))))
-   `(outline-6 ((,class (:inherit outline-1))))
-   `(outline-7 ((,class (:inherit outline-1))))
-   `(outline-8 ((,class (:inherit outline-1))))
+   `(outline-2 ((,class (:height 1.0 :weight bold :foreground "#7d57c2"))))
+   `(outline-3 ((,class (:height 1.0 :weight bold :foreground "#cc6d00"))))
+   `(outline-4 ((,class (:height 1.0 :weight bold :foreground "#2e994c"))))
+   `(outline-5 ((,class (:height 1.0 :weight bold :foreground "#00638a"))))
+   `(outline-6 ((,class (:height 1.0 :weight bold :foreground "#D0372D"))))
+   `(outline-7 ((,class (:height 1.0 :weight bold :foreground "#008080"))))
+   `(outline-8 ((,class (:height 1.0 :weight bold :foreground "#6c7378"))))
 
    ;; org
-   `(org-level-1 ((,class (:height 1.3 :weight bold :foreground "#008abd"))))
-   `(org-level-2 ((,class (:height 1.3 :weight bold :foreground "#7d57c2"))))
-   `(org-level-3 ((,class (:height 1.3 :weight bold :foreground "#cc6d00"))))
-   `(org-level-4 ((,class (:height 1.3 :weight bold :foreground "#678f03"))))
-   `(org-level-5 ((,class (:height 1.3 :weight bold :foreground "#00638a"))))
-   `(org-level-6 ((,class (:height 1.3 :weight bold :foreground "#E67373"))))
-   `(org-level-7 ((,class (:height 1.3 :weight bold :foreground "#089ea1"))))
-   `(org-level-8 ((,class (:height 1.3 :weight bold :foreground "#00638a"))))
+   `(org-level-1 ((,class (:height 1.0 :weight bold :foreground "#008abd"))))
+   `(org-level-2 ((,class (:height 1.0 :weight bold :foreground "#7d57c2"))))
+   `(org-level-3 ((,class (:height 1.0 :weight bold :foreground "#cc6d00"))))
+   `(org-level-4 ((,class (:height 1.0 :weight bold :foreground "#2e994c"))))
+   `(org-level-5 ((,class (:height 1.0 :weight bold :foreground "#00638a"))))
+   `(org-level-6 ((,class (:height 1.0 :weight bold :foreground "#D0372D"))))
+   `(org-level-7 ((,class (:height 1.0 :weight bold :foreground "#008080"))))
+   `(org-level-8 ((,class (:height 1.0 :weight bold :foreground "#6c7378"))))
 
    `(org-block ((,class (:background "#f2f2f2"))))
    `(org-block-background ((,class (:background "#f2f2f2"))))
