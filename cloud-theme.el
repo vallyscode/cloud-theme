@@ -251,16 +251,6 @@
    `(company-scrollbar-bg ((,class (:background "#cccccc"))))
    `(company-scrollbar-fg ((,class (:background "#8c8c8c"))))
 
-   ;; org
-   `(outline-1 ((,class (:height 1.0 :weight bold :foreground "#008abd"))))
-   `(outline-2 ((,class (:inherit outline-1))))
-   `(outline-3 ((,class (:inherit outline-1))))
-   `(outline-4 ((,class (:inherit outline-1))))
-   `(outline-5 ((,class (:inherit outline-1))))
-   `(outline-6 ((,class (:inherit outline-1))))
-   `(outline-7 ((,class (:inherit outline-1))))
-   `(outline-8 ((,class (:inherit outline-1))))
-
    ;; eldoc
    `(eldoc-highlight-function-argument ((,class (:foreground "#5e8203" :weight bold))))
 
@@ -308,15 +298,37 @@
    `(helm-ff-invalid-symlink ((,class (:foreground "#7d57c2" :background "#ffdddd"))))
    `(helm-ff-symlink ((,class (:foreground "#7d57c2"))))
 
+   `(outline-1 ((,class (:height 1.0 :weight bold :foreground "#008abd"))))
+   `(outline-2 ((,class (:inherit outline-1))))
+   `(outline-3 ((,class (:inherit outline-1))))
+   `(outline-4 ((,class (:inherit outline-1))))
+   `(outline-5 ((,class (:inherit outline-1))))
+   `(outline-6 ((,class (:inherit outline-1))))
+   `(outline-7 ((,class (:inherit outline-1))))
+   `(outline-8 ((,class (:inherit outline-1))))
+
    ;; org
-   `(org-level-1 ((,class (:weight bold :foreground "#008abd"))))
-   `(org-level-2 ((,class (:inherit org-level-1))))
-   `(org-level-3 ((,class (:inherit org-level-1))))
-   `(org-level-4 ((,class (:inherit org-level-1))))
-   `(org-level-5 ((,class (:inherit org-level-1))))
-   `(org-level-6 ((,class (:inherit org-level-1))))
-   `(org-level-7 ((,class (:inherit org-level-1))))
-   `(org-level-8 ((,class (:inherit org-level-1))))
+   `(org-level-1 ((,class (:height 1.0 :weight bold :foreground "#008abd"))))
+   `(org-level-2 ((,class (:height 1.0 :weight bold :foreground "#7d57c2"))))
+   `(org-level-3 ((,class (:height 1.0 :weight bold :foreground "#ff9419"))))
+   `(org-level-4 ((,class (:height 1.0 :weight bold :foreground "#678f03"))))
+   `(org-level-5 ((,class (:height 1.0 :weight bold :foreground "#00afff"))))
+   `(org-level-6 ((,class (:height 1.0 :weight bold :foreground "#089ea1"))))
+   `(org-level-7 ((,class (:height 1.0 :weight bold :foreground "#E67373"))))
+   `(org-level-8 ((,class (:height 1.0 :weight bold :foreground "#22aa22"))))
+
+   `(org-block ((,class (:background "#f2f2f2"))))
+   `(org-block-background ((,class (:background "#f2f2f2"))))
+   `(org-block-begin-line ((,class (:underline nil :foreground "#454545" :background "#cfd8dc"))))
+   `(org-block-end-line ((,class (:overline nil :foreground "#454545" :background "#cfd8dc"))))
+   `(org-checkbox ((,class (:weight bold :foreground "#7d57c2" :background "#f2f2f2"))))
+   `(org-code ((,class (:foreground "#006400" :background "#fdfff7"))))
+
+   `(org-todo ((,class (:weight bold :box (:line-width 1 :color "#993d3d") :foreground "#993d3d" :background "#ffdddd"))))
+   `(org-done ((,class (:weight bold :box (:line-width 1 :color "#2e994c") :foreground "#2e994c" :background "#ddffdd"))))
+   `(org-headline-done ((,class (:height 1.0 :weight normal :strike-through t :foreground "#454545"))))
+   `(org-date ((,class (:underline t :foreground "#7d57c2"))))
+   `(org-document-title ((,class (:height 1.8 :weight bold :foreground "#454545"))))
 
    ;; highlight numbers
    `(highlight-numbers-number ((,class (:foreground "#d75f00"))))
