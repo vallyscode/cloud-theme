@@ -1,6 +1,6 @@
 # cloud-theme
 
-    Light theme for emacs
+Light theme for emacs
 
 # screen
 
