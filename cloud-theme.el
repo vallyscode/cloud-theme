@@ -10,123 +10,32 @@
 ;; Package: cloud-theme
 ;; Package-Requires: ()
 
+;; This program is free software; you can redistribute it and/or modify
+;; it under the terms of the GNU General Public License as published by
+;; the Free Software Foundation, either version 3 of the License, or
+;; (at your option) any later version.
+
+;; This program is distributed in the hope that it will be useful,
+;; but WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+;; GNU General Public License for more details.
+
+;; You should have received a copy of the GNU General Public License
+;; along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+;; This file is NOT part of GNU Emacs
+
 ;;; Commentary:
 
 ;; To use it, put the following in your Emacs configuration file:
 ;;
-;;   (load-theme 'cloud t)
+;; (use-package cloud-theme
+;;   :ensure t
+;;   :config
+;;   (load-theme 'cloud t))
 ;;
 
 ;;; Code:
-
-;; Palette:
-;; #00638a
-;; #008abc
-;; #7c56c1
-;; #5e8302
-;; #388e3c
-;; #22aa22
-;; #2e994c
-;; #ddffdd
-;; #cceecc
-;; #c00000
-;; #e00000
-;; #ffdddd
-;; #eecccc
-;; #c06600
-;; #f38e00
-;; #eec931
-;; #f0d97a
-;; #eeeeee
-;; #e0e0e0
-;; #d0d0d0
-;; #c0c0c0
-;; #a0a0a0
-;; #8c8c8c
-;; #4d4d4d
-;; #009688
-
-;; #00afff
-;; #8d66fe
-;; #42c2f8
-;; #ffdddd
-;; #D0372D
-;; #008080
-;; #F38630
-;; #eeeeee
-;; #e5e5e5
-;; #c0c0c0
-
-
-;; #089ea1
-;; #699bae
-;; #8dd0eb
-;; #5ec3eb
-;; #3b9dc4
-;; #3793B8
-;; #005270
-;; #20566B
-;; #006c96
-;; #00638a
-;; #286a85
-;; #2c7591
-;; #2f7e9d
-;; #2f7f9e
-;; #2f7f9e
-;; #3389ab
-;; #008abc
-;; #008abd
-;; #0087bf
-;; #1171AD
-;; #075E94
-;; #005173
-;; #fffbc4
-;; #f0f0d8
-;; #f8f1d3
-;; #a8b3ba
-;; #919aa1
-;; #81a18a
-;; #74917d
-;; #aebaa8
-;; #b4efb4
-;; #ededed
-;; #838c91
-;; #6c7378
-;; #cccccc
-;; #d1d1d1
-;; #d4d4d4
-;; #f2f2f2
-;; #454545
-;; #ad0000
-;; #c70000
-;; #ed0000
-;; #ff1919
-;; #ffdddd
-;; #bf6600
-;; #bf7000
-;; #cc6d00
-;; #ff9419
-;; #f4ad49
-;; #6c4ca8
-;; #7d57c2
-;; #7c56c1
-;; #855dcf
-;; #b48cffy
-;; #5e8203
-;; #678f03
-;; #7a9730
-;; #a7cf42
-;; #95cf04
-;; #E67373
-;; #FF9999
-;; #993D3D
-;; #2e994c
-;; #73E693
-;; #6DB347
-;; #AFE9AF
-;; #4E7F33
-;; #6DB347
-;; #CDFFB3
 
 (deftheme cloud "Cloud light color theme")
 
@@ -134,7 +43,6 @@
   :group 'faces)
 
 (let ((class '((class color) (min-colors 89))))
-
   (custom-theme-set-faces
    'cloud
    `(default ((,class (:background "#f2f2f2" :foreground "#454545"))))
@@ -233,7 +141,7 @@
    `(dired-symlink ((,class (:foreground "#855dcf"))))
 
    ;; diff
-   `(diff-added ((,class (:background "#ddffdd" :foreground "#2e994c"))))
+   `(diff-added ((,class (:background "#ddffdd" :foreground "#22863a"))))
    `(diff-removed ((,class (:background "#ffdddd" :foreground "#d0372d"))))
    `(diff-changed ((,class (:background "#f8f1d3" :foreground "#bf7000"))))
    `(diff-refine-added ((,class (:background "#cceecc"))))
@@ -241,9 +149,9 @@
    `(diff-refine-changed ((,class (:background "#fce8c9"))))
    `(diff-header ((,class (:foreground "#8c8c8c" :background "#f2f2f2"))))
    `(diff-file-header ((,class (:foreground "#2f7e9d" :background "#f2f2f2"))))
-   `(diff-hunk-header ((,class (:foreground "#7d57c2" :background "#f2f2f2"))))
+   `(diff-hunk-header ((,class (:weight bold :foreground "#6f42c1" :background "#f2f2f2"))))
    `(diff-index ((,class (:foreground "#8c8c8c" :background "#f2f2f2"))))
-   `(diff-indicator-added ((,class (:foreground "#2e994c" :background "#ddffdd"))))
+   `(diff-indicator-added ((,class (:foreground "#22863a" :background "#ddffdd"))))
    `(diff-indicator-removed ((,class (:foreground "#d0372d" :background "#ffdddd"))))
    `(diff-indicator-changed ((,class (:foreground "#bf7000" :background "#f8f1d3"))))
    `(diff-nonexistent ((,class (:foreground "#454545"))))
