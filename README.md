@@ -4,7 +4,7 @@
 
 # screen
 
-    ![Screenshot](screenshot1.png)
+![Screenshot](screenshot1.png)
 
 # installation (MELPA)
 
