@@ -4,11 +4,11 @@
 
 ;; Author: Valerii Lysenko <vallyscode@gmail.com>
 ;; Maintainer: Valerii Lysenko <vallyscode@gmail.com>
-;; Keywords: color theme light
+;; Keywords: color theme
 ;; URL: https://github.com/vallyscode/cloud-theme
 ;; Version: 0.1
 ;; Package: cloud-theme
-;; Package-Requires: ()
+;; Package-Requires: ((emacs "24"))
 
 ;; This program is free software; you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
