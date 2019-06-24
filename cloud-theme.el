@@ -330,5 +330,5 @@
                    (file-name-directory load-file-name))))
 
 (provide-theme 'cloud)
-
+(provide 'cloud-theme)
 ;;; cloud-theme.el ends here
