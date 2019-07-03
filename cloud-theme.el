@@ -231,7 +231,7 @@
    `(helm-moccur-buffer ((,class (:foreground "#454545" :background "#cfd8dc"))));;highlight moccur buffer name
    `(helm-source-header ((,class (:foreground "#454545" :background "#cfd8dc" :height 1.3 :bold t))))
    `(helm-match ((,class (:foreground "#454545" :background "#fffbc4"))))
-   `(helm-selection ((,class (:background "#f2f2f2"))))
+   `(helm-selection ((,class (:background "#f2f2f2" :bold t)))))
    `(helm-selection-line ((,class (:background "#f2f2f2"))))
    `(helm-separator ((,class (:foreground "#454545"))))
    `(helm-visible-mark ((,class (:foreground "#D0372D" :background "#ffdddd"))))
