@@ -10,7 +10,7 @@ Light theme for emacs
 
 ![Helm](helm.png)
 
-# avy
+# ivy
 
 ![ivy](ivy.png)
 
