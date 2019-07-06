@@ -231,7 +231,7 @@
    `(helm-moccur-buffer ((,class (:foreground "#454545" :background "#cfd8dc"))));;highlight moccur buffer name
    `(helm-source-header ((,class (:foreground "#454545" :background "#cfd8dc" :height 1.3 :bold t))))
    `(helm-match ((,class (:foreground "#454545" :background "#fffbc4"))))
-   `(helm-selection ((,class (:background "#ededed"))))
+   `(helm-selection ((,class (:background "#cccccc"))))
    `(helm-selection-line ((,class (:background "#f2f2f2"))))
    `(helm-separator ((,class (:foreground "#454545"))))
    `(helm-visible-mark ((,class (:foreground "#D0372D" :background "#ffdddd"))))
@@ -320,6 +320,14 @@
    `(js2-private-function-call ((,class (:foreground "#f38e00"))))
    `(js2-private-member ((,class (:foreground "#008abd"))))
    `(js2-object-property ((,class (:foreground "#009688"))))
+
+   ;; ivy
+   `(ivy-current-match ((,class (:background "#cccccc"))))
+   `(ivy-minibuffer-match-face-1 ((,class (:background "#f2f2f2"))))
+   `(ivy-minibuffer-match-face-2 ((,class (:weight bold :background "#fffbc4"))))
+   `(ivy-minibuffer-match-face-3 ((,class (:weight bold :background "#fffbc4"))))
+   `(ivy-minibuffer-match-face-4 ((,class (:weight bold :background "#fffbc4"))))
+   ;; `(ivy-action ((,class ())))
    ))
 
 ;;;###autoload

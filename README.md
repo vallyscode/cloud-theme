@@ -2,13 +2,17 @@
 
 Light theme for emacs
 
-# screen
+# elisp
 
-![Screenshot](screenshot1.png)
+![Screenshot](elisp.png)
 
 # helm
 
 ![Helm](helm.png)
+
+# avy
+
+![ivy](ivy.png)
 
 # installation (MELPA)
 
