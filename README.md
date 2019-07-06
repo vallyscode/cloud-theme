@@ -6,6 +6,10 @@ Light theme for emacs
 
 ![Screenshot](screenshot1.png)
 
+# helm
+
+![Helm](helm.png)
+
 # installation (MELPA)
 
     M-x package-install RET cloud-theme
