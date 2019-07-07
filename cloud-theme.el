@@ -327,7 +327,13 @@
    `(ivy-minibuffer-match-face-2 ((,class (:weight bold :background "#fffbc4"))))
    `(ivy-minibuffer-match-face-3 ((,class (:weight bold :background "#fffbc4"))))
    `(ivy-minibuffer-match-face-4 ((,class (:weight bold :background "#fffbc4"))))
-   ;; `(ivy-action ((,class ())))
+
+   ;; swiper
+   `(swiper-line-face ((,class (:background "#f2f2f2"))))
+   `(swiper-match-face-1 ((,class (:background "#fffbc4"))))
+   `(swiper-match-face-2 ((,class (:background "#fffbc4"))))
+   `(swiper-match-face-3 ((,class (:background "#fffbc4"))))
+   `(swiper-match-face-4 ((,class (:background "#fffbc4"))))
    ))
 
 ;;;###autoload

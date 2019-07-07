@@ -14,6 +14,10 @@ Light theme for emacs
 
 ![ivy](ivy.png)
 
+# swiper
+
+![swiper](swiper.png)
+
 # installation (MELPA)
 
     M-x package-install RET cloud-theme
