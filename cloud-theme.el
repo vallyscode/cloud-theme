@@ -333,8 +333,166 @@
    `(swiper-match-face-1 ((,class (:background "#fffbc4"))))
    `(swiper-match-face-2 ((,class (:background "#fffbc4"))))
    `(swiper-match-face-3 ((,class (:background "#fffbc4"))))
-   `(swiper-match-face-4 ((,class (:background "#fffbc4"))))
-   ))
+   `(swiper-match-face-4 ((,class (:background "#fffbc4"))))))
+
+(defface cloud-line-readonly-face
+  '((t :foreground "#484848"
+       :weight bold))
+  "Face for rean only buffer indication."
+  :group 'cloud-line)
+
+(defface cloud-line-modified-face
+  '((t :foreground "#484848"
+       :weight bold))
+  "Face for modified buffer indication."
+  :group 'cloud-line)
+
+(defface cloud-line-position-face
+  '((t :foreground "#cc6d00"
+       :weight normal))
+  "Face for indication of position in buffer.")
+
+(defface cloud-line-file-size-face
+  '((t :foreground "#cc6d00"
+       :weight normal))
+  "Face for indication of file size.")
+
+(defface cloud-line-vc-face
+  '((t :foreground "#484848"
+       :weight normal
+       :slant italic))
+  "Face for VC state indication.")
+
+(defface cloud-line-file-name-face
+  '((t :foreground "#484848"
+       :weight bold))
+  "Face for buffer file name.")
+
+(defface cloud-line-evil-normal-face
+  '((t :foreground "#388e3c"
+       :weight bold
+       :height 1.0))
+  "Face for evil normal state indication.")
+
+(defface cloud-line-evil-insert-face
+  '((t :foreground "#d0372d"
+       :weight bold
+       :height 1.0))
+  "Face for evil insert state indication.")
+
+(defface cloud-line-evil-visual-face
+  '((t :foreground "#008abc"
+       :weight bold
+       :height 1.0))
+  "Face for evil visual state indication.")
+
+(defface cloud-line-evil-replace-face
+  '((t :foreground "#c06600"
+       :weight bold
+       :height 1.0))
+  "Face for evil replace state indication.")
+
+(defface cloud-line-evil-emacs-face
+  '((t :foreground "#6c4ca8"
+       :weight bold
+       :height 1.0))
+  "Face for evil emacs state indication.")
+
+(defface cloud-line-major-mode-face
+  '((t :foreground "#6c4ca8"
+       :weight bold
+       :height 1.0))
+  "Face for major mode name.")
+
+(defun cloud-line-align-right ()
+  "Put some spaces to align right."
+  '(:eval (propertize
+           " " 'display
+           `((space :align-to (- (+ right right-fringe right-margin)
+                                 ,(+ 2 (string-width mode-name))))))))
+
+(defun cloud-line-position ()
+  "Display position in buffer."
+  '(:eval (list
+           (propertize "%l" 'face 'cloud-line-position-face)
+           ":"
+           (propertize "%c" 'face 'cloud-line-position-face))))
+
+(defun cloud-line-readonly-state ()
+  "Display read only state."
+  '(:eval (let ((tag (if buffer-read-only "[ro]" "")))
+            (propertize tag 'face 'cloud-line-readonly-face))))
+
+(defun cloud-line-modified-state ()
+  "Display modified indicator."
+  '(:eval (let ((tag (if (buffer-modified-p (current-buffer)) "[+]" "")))
+            (propertize tag 'face 'cloud-line-modified-face))))
+
+(defun cloud-line-evil-state ()
+  "Display evil state."
+  '(:eval (cond ((eq (intern "normal") evil-state)
+                 (propertize "<N>" 'face 'cloud-line-evil-normal-face))
+                ((eq (intern "insert") evil-state)
+                 (propertize "<I>" 'face 'cloud-line-evil-insert-face))
+                ((eq (intern "visual") evil-state)
+                 (propertize "<V>" 'face 'cloud-line-evil-visual-face))
+                ((eq (intern "replace") evil-state)
+                 (propertize "<R>" 'face 'cloud-line-evil-replace-face))
+                ((eq (intern "emacs") evil-state)
+                 (propertize "<E>" 'face 'cloud-line-evil-emacs-face))
+                (t "<?>"))))
+
+(defun cloud-line-file-name ()
+  "Display file name."
+  '(:eval (concat
+           " "
+           (propertize "%b" 'face 'cloud-line-file-name-face 'help-echo (buffer-file-name)))))
+
+(defun cloud-line-major-mode ()
+  "Display major mode."
+  (propertize " %m " 'face 'cloud-line-major-mode-face))
+
+(defun cloud-line-vc-state ()
+  "Display VC state."
+  '(:eval (when-let (vc vc-mode)
+            (list
+             "git:"
+             (propertize (substring vc 5) 'face 'cloud-line-vc-face)))))
+
+(defun cloud-line-file-size ()
+  "Display file size."
+  '(:eval (propertize " %I" 'face 'cloud-line-file-size-face)))
+
+(defun cloud-line-flycheck-state ()
+  "Display flycheck state."
+  '(:eval (when flycheck-mode
+            (let* ((text ()))))))
+
+;;;###autoload
+(defun cloud-theme-mode-line ()
+  "Customize mode line to cloud style."
+  (interactive)
+  (let ((class '((class color) (min-colors 89))))
+    (custom-set-faces
+     `(mode-line ((,class (:background "#f2f2f2"
+                                       :height 0.9
+                                       :foreground "#484848"
+                                       :box (:line-width 1 :color "#f2f2f2")))))))
+  (setq-default mode-line-format
+                (list
+                 "%e"
+                 " "
+                 (cloud-line-evil-state)
+                 (cloud-line-file-size)
+                 (cloud-line-file-name)
+                 (cloud-line-readonly-state)
+                 (cloud-line-modified-state)
+                 " "
+                 (cloud-line-vc-state)
+                 " "
+                 (cloud-line-position)
+                 (cloud-line-align-right)
+                 (cloud-line-major-mode))))
 
 ;;;###autoload
 (and load-file-name
@@ -345,4 +503,5 @@
 
 (provide-theme 'cloud)
 (provide 'cloud-theme)
+
 ;;; cloud-theme.el ends here

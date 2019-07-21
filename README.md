@@ -18,6 +18,10 @@ Light theme for emacs
 
 ![swiper](swiper.png)
 
+# modeline
+
+![modeline](modeline.png)
+
 # installation (MELPA)
 
     M-x package-install RET cloud-theme
