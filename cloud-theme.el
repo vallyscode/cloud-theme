@@ -333,7 +333,18 @@
    `(swiper-match-face-1 ((,class (:background "#fffbc4"))))
    `(swiper-match-face-2 ((,class (:background "#fffbc4"))))
    `(swiper-match-face-3 ((,class (:background "#fffbc4"))))
-   `(swiper-match-face-4 ((,class (:background "#fffbc4"))))))
+   `(swiper-match-face-4 ((,class (:background "#fffbc4"))))
+
+   ;; cypher
+   `(cypher-clause-face ((,class (:weight normal :foreground "#00638a"))))
+   `(cypher-function-face ((,class (:foreground "#454545"))))
+   `(cypher-keyword-face ((,class (:weight bold :foreground "#00638a"))))
+   `(cypher-node-type-face ((,class (:weight normal :foreground "#008abd"))))
+   `(cypher-pattern-face ((,class (:foreground "#d70087" :background "#f2f2f2"))))
+   `(cypher-relation-type-face ((,class (:weight normal :foreground "#008080"))))
+   `(cypher-symbol-face ((,class (:slant italic :foreground "#454545"))))
+   `(cypher-variable-face ((,class (:foreground "#454545"))))
+   ))
 
 (defface cloud-line-readonly-face
   '((t :foreground "#484848"

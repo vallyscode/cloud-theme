@@ -22,6 +22,10 @@ Light theme for emacs
 
 ![modeline](modeline.png)
 
+# cypher-mode
+
+![cypher-mode](cypher-mode.png)
+
 # installation (MELPA)
 
     M-x package-install RET cloud-theme
