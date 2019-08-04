@@ -343,77 +343,36 @@
    `(cypher-pattern-face ((,class (:foreground "#d70087" :background "#f2f2f2"))))
    `(cypher-relation-type-face ((,class (:weight normal :foreground "#008080"))))
    `(cypher-symbol-face ((,class (:slant italic :foreground "#454545"))))
-   `(cypher-variable-face ((,class (:foreground "#454545"))))
-   ))
+   `(cypher-variable-face ((,class (:foreground "#454545"))))))
 
-(defface cloud-line-readonly-face
-  '((t :foreground "#484848"
-       :weight bold))
-  "Face for rean only buffer indication."
-  :group 'cloud-line)
+;;
+;; Cloud mode line
 
-(defface cloud-line-modified-face
-  '((t :foreground "#484848"
-       :weight bold))
-  "Face for modified buffer indication."
-  :group 'cloud-line)
+;; Utils
 
-(defface cloud-line-position-face
-  '((t :foreground "#cc6d00"
-       :weight normal))
-  "Face for indication of position in buffer.")
+(defvar cloud-line-selected-window (frame-selected-window)
+  "Selected window.")
 
-(defface cloud-line-file-size-face
-  '((t :foreground "#cc6d00"
-       :weight normal))
-  "Face for indication of file size.")
+(defun cloud-line-selected-window-active-p ()
+  "`TRUE' if selected window is active."
+  (eq cloud-line-selected-window (selected-window)))
 
-(defface cloud-line-vc-face
-  '((t :foreground "#484848"
-       :weight normal
-       :slant italic))
-  "Face for VC state indication.")
+(defun cloud-line-set-selected-window ()
+  "Set the variable."
+  (when (not (minibuffer-window-active-p (frame-selected-window)))
+    (setq cloud-line-selected-window (frame-selected-window))
+    (force-mode-line-update)))
 
-(defface cloud-line-file-name-face
-  '((t :foreground "#484848"
-       :weight bold))
-  "Face for buffer file name.")
+(defun cloud-line-unset-selected-window ()
+  "Unset the variable."
+  (setq cloud-line-selected-window nil)
+  (force-mode-line-update))
 
-(defface cloud-line-evil-normal-face
-  '((t :foreground "#388e3c"
-       :weight bold
-       :height 1.0))
-  "Face for evil normal state indication.")
-
-(defface cloud-line-evil-insert-face
-  '((t :foreground "#d0372d"
-       :weight bold
-       :height 1.0))
-  "Face for evil insert state indication.")
-
-(defface cloud-line-evil-visual-face
-  '((t :foreground "#008abc"
-       :weight bold
-       :height 1.0))
-  "Face for evil visual state indication.")
-
-(defface cloud-line-evil-replace-face
-  '((t :foreground "#c06600"
-       :weight bold
-       :height 1.0))
-  "Face for evil replace state indication.")
-
-(defface cloud-line-evil-emacs-face
-  '((t :foreground "#6c4ca8"
-       :weight bold
-       :height 1.0))
-  "Face for evil emacs state indication.")
-
-(defface cloud-line-major-mode-face
-  '((t :foreground "#6c4ca8"
-       :weight bold
-       :height 1.0))
-  "Face for major mode name.")
+(add-hook 'window-configuration-change-hook 'cloud-line-set-selected-window)
+(add-hook 'buffer-list-update-hook 'cloud-line-set-selected-window)
+(with-no-warnings
+  (add-hook 'focus-in-hook 'cloud-line-set-selected-window)
+  (add-hook 'focus-out-hook 'cloud-line-unset-selected-window))
 
 (defun cloud-line-align-right ()
   "Put some spaces to align right."
@@ -422,88 +381,297 @@
            `((space :align-to (- (+ right right-fringe right-margin)
                                  ,(+ 2 (string-width mode-name))))))))
 
-(defun cloud-line-position ()
-  "Display position in buffer."
-  '(:eval (list
-           (propertize "%l" 'face 'cloud-line-position-face)
-           ":"
-           (propertize "%c" 'face 'cloud-line-position-face))))
+;; evil mode indicator
 
-(defun cloud-line-readonly-state ()
-  "Display read only state."
-  '(:eval (let ((tag (if buffer-read-only "[ro]" "")))
-            (propertize tag 'face 'cloud-line-readonly-face))))
+(defface cloud-line-evil-normal-active
+  '((t :foreground "#388e3c"
+       :weight bold
+       :height 1.0))
+  "Face for evil normal state active.")
 
-(defun cloud-line-modified-state ()
-  "Display modified indicator."
-  '(:eval (let ((tag (if (buffer-modified-p (current-buffer)) "[+]" "")))
-            (propertize tag 'face 'cloud-line-modified-face))))
+(defface cloud-line-evil-normal-inactive
+  '((t :foreground "#a7cf42"
+       :weight bold
+       :height 1.0))
+  "Face for evil normal state inactive.")
 
-(defun cloud-line-evil-state ()
-  "Display evil state."
-  '(:eval (cond ((eq (intern "normal") evil-state)
-                 (propertize "<N>" 'face 'cloud-line-evil-normal-face))
-                ((eq (intern "insert") evil-state)
-                 (propertize "<I>" 'face 'cloud-line-evil-insert-face))
-                ((eq (intern "visual") evil-state)
-                 (propertize "<V>" 'face 'cloud-line-evil-visual-face))
-                ((eq (intern "replace") evil-state)
-                 (propertize "<R>" 'face 'cloud-line-evil-replace-face))
-                ((eq (intern "emacs") evil-state)
-                 (propertize "<E>" 'face 'cloud-line-evil-emacs-face))
-                (t "<?>"))))
+(defface cloud-line-evil-insert-active
+  '((t :foreground "#d0372d"
+       :weight bold
+       :height 1.0))
+  "Face for evil insert state active.")
 
-(defun cloud-line-file-name ()
-  "Display file name."
-  '(:eval (concat
-           " "
-           (propertize "%b" 'face 'cloud-line-file-name-face 'help-echo (buffer-file-name)))))
+(defface cloud-line-evil-insert-inactive
+  '((t :foreground "#ff9999"
+       :weight bold
+       :height 1.0))
+  "Face for evil insert state inactive.")
 
-(defun cloud-line-major-mode ()
+(defface cloud-line-evil-visual-active
+  '((t :foreground "#008abc"
+       :weight bold
+       :height 1.0))
+  "Face for evil visual state active.")
+
+(defface cloud-line-evil-visual-inactive
+  '((t :foreground "#8dd0eb"
+       :weight bold
+       :height 1.0))
+  "Face for evil visual state inactive.")
+
+(defface cloud-line-evil-replace-active
+  '((t :foreground "#c06600"
+       :weight bold
+       :height 1.0))
+  "Face for evil replace state active.")
+
+(defface cloud-line-evil-replace-inactive
+  '((t :foreground "#f0d97a"
+       :weight bold
+       :height 1.0))
+  "Face for evil replace state inactive.")
+
+(defface cloud-line-evil-emacs-active
+  '((t :foreground "#6c4ca8"
+       :weight bold
+       :height 1.0))
+"Face for evil emacs state active.")
+
+(defface cloud-line-evil-emacs-inactive
+  '((t :foreground "#b48cff"
+       :weight bold
+       :height 1.0))
+"Face for evil emacs state inactive.")
+
+(defun cloud-line--evil-segment ()
+  "Display current evil state."
+  '(:eval (when (bound-and-true-p evil-local-mode)
+            (let ((tag (evil-state-property evil-state :tag t)))
+              (propertize tag
+                          'face
+                          (let ((active (cloud-line-selected-window-active-p)))
+                            (cond ((string= " <N> " tag)
+                                   (if active
+                                       'cloud-line-evil-normal-active
+                                     'cloud-line-evil-normal-inactive))
+                                  ((string= " <I> " tag)
+                                   (if active
+                                       'cloud-line-evil-insert-active
+                                     'cloud-line-evil-insert-inactive))
+                                  ((string= " <V> " tag)
+                                   (if active
+                                       'cloud-line-evil-visual-active
+                                     'cloud-line-evil-visual-inactive))
+                                  ((string= " <R> " tag)
+                                   (if active
+                                       'cloud-line-evil-replace-active
+                                     'cloud-line-evil-replace-inactive))
+                                  ((string= " <E> " tag)
+                                   (if active
+                                       'cloud-line-evil-emacs-active
+                                     'cloud-line-evil-emacs-inactive))
+                                  (t 'cloud-line-evil-normal-active))))))))
+
+;; File name indicatior
+
+(defface cloud-line-file-name-active
+  '((t :foreground "#00638a"
+       :weight bold))
+  "Face for buffer file name active.")
+
+(defface cloud-line-file-name-inactive
+  '((t :foreground "#8dd0eb"
+       :weight bold))
+  "Face for buffer file name inactive.")
+
+(defun cloud-line--file-name-segment ()
+  "Display current buffer file name."
+  '(:eval (propertize "%b"
+                      'help-echo (buffer-file-name)
+                      'face
+                      (if (cloud-line-selected-window-active-p)
+                          'cloud-line-file-name-active
+                        'cloud-line-file-name-inactive))))
+
+;; Major mode
+
+(defface cloud-line-major-mode-active
+  '((t :foreground "#6c4ca8"
+       :weight bold
+       :height 1.0))
+  "Face for major mode name active.")
+
+(defface cloud-line-major-mode-inactive
+  '((t :foreground "#b48cff"
+       :weight bold
+       :height 1.0))
+  "Face for major mode name inactive.")
+
+(defun cloud-line-major-mode-segment ()
   "Display major mode."
-  (propertize " %m " 'face 'cloud-line-major-mode-face))
+  '(:eval (propertize "%m"
+                      'face
+                      (if (cloud-line-selected-window-active-p)
+                          'cloud-line-major-mode-active
+                        'cloud-line-major-mode-inactive))))
 
-(defun cloud-line-vc-state ()
+;; VC
+
+(defface cloud-line-vc-active
+  '((t :foreground "#5e8203"
+       :weight normal
+       :slant italic))
+  "Face for VC state active.")
+
+(defface cloud-line-vc-inactive
+  '((t :foreground "#a7cf42"
+       :weight normal
+       :slant italic))
+  "Face for VC state inactive.")
+
+(defun cloud-line-vc-segment ()
   "Display VC state."
   '(:eval (when-let (vc vc-mode)
             (list
              "git:"
-             (propertize (substring vc 5) 'face 'cloud-line-vc-face)))))
+             (propertize (substring vc 5)
+                         'face
+                         (if (cloud-line-selected-window-active-p)
+                             'cloud-line-vc-active
+                           'cloud-line-vc-inactive))))))
 
-(defun cloud-line-file-size ()
+;; File size
+
+(defface cloud-line-file-size-active
+  '((t :foreground "#cc6d00"
+       :weight normal))
+  "Face for file size active buffer.")
+
+(defface cloud-line-file-size-inactive
+  '((t :foreground "#f0d97a"
+       :weight normal))
+  "Face for file size inactive buffer.")
+
+(defun cloud-line-file-size-segment ()
   "Display file size."
-  '(:eval (propertize " %I" 'face 'cloud-line-file-size-face)))
+  '(:eval (propertize " %I"
+                      'face
+                      (if (cloud-line-selected-window-active-p)
+                          'cloud-line-file-size-active
+                        'cloud-line-file-size-inactive))))
 
-(defun cloud-line-flycheck-state ()
-  "Display flycheck state."
-  '(:eval (when flycheck-mode
-            (let* ((text ()))))))
+;; Read only
+
+(defface cloud-line-readonly
+  '((t :weight normal))
+  "Face for rean only buffer indication."
+  :group 'cloud-line)
+
+(defun cloud-line-readonly-state-segment ()
+  "Display read only state."
+  '(:eval (let ((tag (if buffer-read-only "[ro]" "")))
+            (propertize tag 'face 'cloud-line-readonly))))
+
+;; Modified
+
+(defface cloud-line-modified
+  '((t :weight normal))
+  "Face for modified buffer indication."
+  :group 'cloud-line)
+
+(defun cloud-line-modified-state-segment ()
+  "Display modified indicator."
+  '(:eval (let ((tag (if (buffer-modified-p (current-buffer)) "[+]" "")))
+            (propertize tag 'face 'cloud-line-modified))))
+
+;; Position
+
+(defface cloud-line-position-active
+  '((t :foreground "#cc6d00"
+       :weight normal))
+  "Face for position in active buffer.")
+
+(defface cloud-line-position-inactive
+  '((t :foreground "#f0d97a"
+       :weight normal))
+  "Face for position in inactive buffer.")
+
+(defun cloud-line-position-segment ()
+  "Display position in buffer."
+  '(:eval (let ((f (if (cloud-line-selected-window-active-p)
+                       'cloud-line-position-active
+                     'cloud-line-position-inactive)))
+            (list
+             (propertize "%l" 'face f)
+             ":"
+             (propertize "%c" 'face f)))))
+
+;; Flycheck
+
+(declare-function flycheck-count-errors "flycheck" (errors))
+(defvar flycheck-current-errors)
+(defvar-local cloud-line--flycheck-state nil)
+
+(defun cloud-line--flycheck-segment (&optional status)
+  "Display flycheck `STATUS'."
+  (setq cloud-line--flycheck-state
+        (pcase status
+          ('finished (if flycheck-current-errors
+                         (let-alist (flycheck-count-errors flycheck-current-errors)
+                           (let ((sum (+ (or .error 0) (or .warning 0))))
+                             (concat
+                              "issues: "
+                              (number-to-string sum))))
+                       "✔ good"))
+          ('running "● checking")
+          ('no-checker "")
+          ('errored "✖ error")
+          ('interrupted "@ paused"))))
+
+(defun cloud-line-flycheck-segment ()
+  "Displays color-coded flycheck information in the mode-line (if available)."
+  '(:eval cloud-line--flycheck-state))
 
 ;;;###autoload
 (defun cloud-theme-mode-line ()
   "Customize mode line to cloud style."
   (interactive)
+
+  ;; Setup flycheck hooks
+  (add-hook 'flycheck-status-changed-functions #'cloud-line--flycheck-segment)
+  (add-hook 'flycheck-mode-hook #'cloud-line--flycheck-segment)
+
   (let ((class '((class color) (min-colors 89))))
     (custom-set-faces
-     `(mode-line ((,class (:background "#f2f2f2"
-                                       :height 0.9
-                                       :foreground "#484848"
-                                       :box (:line-width 1 :color "#f2f2f2")))))))
+     `(mode-line
+       ((,class (:background "#f2f2f2"
+                             :height 120
+                             :foreground "#6c7b8b"
+                             :box (:line-width 1 :color "#f2f2f2")))))
+     `(mode-line-inactive
+       ((,class (:background "#f2f2f2"
+                             :height 120
+                             :foreground "#a8b3ba"
+                             :box (:line-width 1 :color "#f2f2f2")))))
+     ))
   (setq-default mode-line-format
                 (list
                  "%e"
+                 (cloud-line--evil-segment)
+                 (cloud-line-file-size-segment)
                  " "
-                 (cloud-line-evil-state)
-                 (cloud-line-file-size)
-                 (cloud-line-file-name)
-                 (cloud-line-readonly-state)
-                 (cloud-line-modified-state)
+                 (cloud-line--file-name-segment)
+                 (cloud-line-readonly-state-segment)
+                 (cloud-line-modified-state-segment)
                  " "
-                 (cloud-line-vc-state)
+                 (cloud-line-position-segment)
                  " "
-                 (cloud-line-position)
+                 (cloud-line-vc-segment)
+                 " "
+                 (cloud-line-flycheck-segment)
+                 " "
                  (cloud-line-align-right)
-                 (cloud-line-major-mode))))
+                 (cloud-line-major-mode-segment))))
 
 ;;;###autoload
 (and load-file-name

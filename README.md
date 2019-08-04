@@ -1,40 +1,44 @@
-# cloud-theme
+cloud-theme
+===========
+
+[![License GPL 3][badge-license]](https://github.com/vallyscode/cloud-theme/blob/master/LICENSE)
+[![MELPA](https://melpa.org/packages/cloud-theme-badge.svg)](https://melpa.org/#/cloud-theme)
 
 Light theme for emacs
 
-# elisp
+## elisp
 
 ![Screenshot](elisp.png)
 
-# helm
+## helm
 
 ![Helm](helm.png)
 
-# ivy
+## ivy
 
 ![ivy](ivy.png)
 
-# swiper
+## swiper
 
 ![swiper](swiper.png)
 
-# modeline
+## modeline
 
 ![modeline](modeline.png)
 
-# cypher-mode
+## cypher-mode
 
 ![cypher-mode](cypher-mode.png)
 
-# installation (MELPA)
+## installation (MELPA)
 
     M-x package-install RET cloud-theme
 
-# setup
+## setup
 
     (load-theme 'cloud-theme t)
 
-# installation (package-use)
+## installation (package-use)
 
     (use-package cloud-theme
         :ensure t
