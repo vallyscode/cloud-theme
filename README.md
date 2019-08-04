@@ -44,3 +44,5 @@ Light theme for emacs
         :ensure t
         :config
         (load-theme 'cloud t))
+
+[badge-license]: https://img.shields.io/badge/license-GPL_3-green.svg
