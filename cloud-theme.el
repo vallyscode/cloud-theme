@@ -374,12 +374,27 @@
   (add-hook 'focus-in-hook 'cloud-line-set-selected-window)
   (add-hook 'focus-out-hook 'cloud-line-unset-selected-window))
 
+
+
+
 (defun cloud-line-align-right ()
   "Put some spaces to align right."
   '(:eval (propertize
            " " 'display
            `((space :align-to (- (+ right right-fringe right-margin)
                                  ,(+ 2 (string-width mode-name))))))))
+
+(defun cloud-line--format (left right)
+  "Return a string of `window-width' length with aligned `LEFT' and `RIGHT' segments."
+  (let ((right-length (length right)))
+    (when (and (display-graphic-p) (eq 'right (get-scroll-bar-mode)))
+      (setq right-length (- right-length 3)))
+    (concat
+     left
+     " "
+     (propertize " "
+                 'display `((space :align-to (- (+ right right-fringe right-margin) ,(+ right-length 0)))))
+     right)))
 
 ;; evil mode indicator
 
@@ -435,44 +450,49 @@
   '((t :foreground "#6c4ca8"
        :weight bold
        :height 1.0))
-"Face for evil emacs state active.")
+  "Face for evil emacs state active.")
 
 (defface cloud-line-evil-emacs-inactive
   '((t :foreground "#b48cff"
        :weight bold
        :height 1.0))
-"Face for evil emacs state inactive.")
+  "Face for evil emacs state inactive.")
 
-(defun cloud-line--evil-segment ()
-  "Display current evil state."
-  '(:eval (when (bound-and-true-p evil-local-mode)
-            (let ((tag (evil-state-property evil-state :tag t)))
-              (propertize tag
-                          'face
-                          (let ((active (cloud-line-selected-window-active-p)))
-                            (cond ((string= " <N> " tag)
-                                   (if active
-                                       'cloud-line-evil-normal-active
-                                     'cloud-line-evil-normal-inactive))
-                                  ((string= " <I> " tag)
-                                   (if active
-                                       'cloud-line-evil-insert-active
-                                     'cloud-line-evil-insert-inactive))
-                                  ((string= " <V> " tag)
-                                   (if active
-                                       'cloud-line-evil-visual-active
-                                     'cloud-line-evil-visual-inactive))
-                                  ((string= " <R> " tag)
-                                   (if active
-                                       'cloud-line-evil-replace-active
-                                     'cloud-line-evil-replace-inactive))
-                                  ((string= " <E> " tag)
-                                   (if active
-                                       'cloud-line-evil-emacs-active
-                                     'cloud-line-evil-emacs-inactive))
-                                  (t 'cloud-line-evil-normal-active))))))))
+(defvar evil-state)
 
-;; File name indicatior
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+;; Segments
+
+(declare-function evil-normal-state-p "evil")
+(declare-function evil-insert-state-p "evil")
+(declare-function evil-motion-state-p "evil")
+(declare-function evil-visual-state-p "evil")
+(declare-function evil-operator-state-p "evil")
+(declare-function evil-replace-state-p "evil")
+(declare-function evil-emacs-state-p "evil")
+(declare-function evil-state-property "evil")
+
+(defun cloud-line--evil ()
+  "Display current evil state.
+Requires evil-mode to be enabled."
+  (when (bound-and-true-p evil-local-mode)
+    (let ((active (cloud-line-selected-window-active-p))
+          (tag (evil-state-property evil-state :tag t)))
+      (propertize tag 'face
+                  (if active
+                      (cond ((evil-normal-state-p) 'cloud-line-evil-normal-active)
+                            ((evil-insert-state-p) 'cloud-line-evil-insert-active)
+                            ((evil-motion-state-p) 'cloud-line-evil-normal-active)
+                            ((evil-visual-state-p) 'cloud-line-evil-visual-active)
+                            ((evil-operator-state-p) 'cloud-line-evil-normal-active)
+                            ((evil-replace-state-p) 'cloud-line-evil-replace-active)
+                            ((evil-emacs-state-p) 'cloud-line-evil-emacs-active))
+                    'cloud-line-evil-emacs-inactive)))))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+;; Faces
 
 (defface cloud-line-file-name-active
   '((t :foreground "#00638a"
@@ -483,17 +503,6 @@
   '((t :foreground "#8dd0eb"
        :weight bold))
   "Face for buffer file name inactive.")
-
-(defun cloud-line--file-name-segment ()
-  "Display current buffer file name."
-  '(:eval (propertize "%b"
-                      'help-echo (buffer-file-name)
-                      'face
-                      (if (cloud-line-selected-window-active-p)
-                          'cloud-line-file-name-active
-                        'cloud-line-file-name-inactive))))
-
-;; Major mode
 
 (defface cloud-line-major-mode-active
   '((t :foreground "#6c4ca8"
@@ -507,16 +516,6 @@
        :height 1.0))
   "Face for major mode name inactive.")
 
-(defun cloud-line-major-mode-segment ()
-  "Display major mode."
-  '(:eval (propertize "%m"
-                      'face
-                      (if (cloud-line-selected-window-active-p)
-                          'cloud-line-major-mode-active
-                        'cloud-line-major-mode-inactive))))
-
-;; VC
-
 (defface cloud-line-vc-active
   '((t :foreground "#5e8203"
        :weight normal
@@ -529,19 +528,6 @@
        :slant italic))
   "Face for VC state inactive.")
 
-(defun cloud-line-vc-segment ()
-  "Display VC state."
-  '(:eval (when-let (vc vc-mode)
-            (list
-             "git:"
-             (propertize (substring vc 5)
-                         'face
-                         (if (cloud-line-selected-window-active-p)
-                             'cloud-line-vc-active
-                           'cloud-line-vc-inactive))))))
-
-;; File size
-
 (defface cloud-line-file-size-active
   '((t :foreground "#cc6d00"
        :weight normal))
@@ -552,39 +538,15 @@
        :weight normal))
   "Face for file size inactive buffer.")
 
-(defun cloud-line-file-size-segment ()
-  "Display file size."
-  '(:eval (propertize " %I"
-                      'face
-                      (if (cloud-line-selected-window-active-p)
-                          'cloud-line-file-size-active
-                        'cloud-line-file-size-inactive))))
-
-;; Read only
-
 (defface cloud-line-readonly
   '((t :weight normal))
   "Face for rean only buffer indication."
   :group 'cloud-line)
 
-(defun cloud-line-readonly-state-segment ()
-  "Display read only state."
-  '(:eval (let ((tag (if buffer-read-only "[ro]" "")))
-            (propertize tag 'face 'cloud-line-readonly))))
-
-;; Modified
-
 (defface cloud-line-modified
   '((t :weight normal))
   "Face for modified buffer indication."
   :group 'cloud-line)
-
-(defun cloud-line-modified-state-segment ()
-  "Display modified indicator."
-  '(:eval (let ((tag (if (buffer-modified-p (current-buffer)) "[+]" "")))
-            (propertize tag 'face 'cloud-line-modified))))
-
-;; Position
 
 (defface cloud-line-position-active
   '((t :foreground "#cc6d00"
@@ -596,15 +558,95 @@
        :weight normal))
   "Face for position in inactive buffer.")
 
-(defun cloud-line-position-segment ()
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+;; Segments
+
+(defun cloud-line--file-name ()
+  "Display current buffer file name."
+  (propertize "%b"
+              'help-echo (buffer-file-name)
+              'face
+              (if (cloud-line-selected-window-active-p)
+                  'cloud-line-file-name-active
+                'cloud-line-file-name-inactive)))
+
+(defun cloud-line--major-mode ()
+  "Display major mode."
+  (propertize "%m"
+              'help-echo "major mode name"
+              'face
+              (if (cloud-line-selected-window-active-p)
+                  'cloud-line-major-mode-active
+                'cloud-line-major-mode-inactive)))
+
+(defun cloud-line--vc ()
+  "Display VC state."
+  (when (vc-mode)
+    (list
+     "git:"
+     (propertize (substring vc-mode 5)
+                 'face
+                 (if (cloud-line-selected-window-active-p)
+                     'cloud-line-vc-active
+                   'cloud-line-vc-inactive)))))
+
+(defun cloud-line--file-size ()
+  "Display file size."
+  (propertize "%I"
+              'help-echo "file size"
+              'face
+              (if (cloud-line-selected-window-active-p)
+                  'cloud-line-file-size-active
+                'cloud-line-file-size-inactive)))
+
+(defun cloud-line--readonly ()
+  "Display read only state."
+  (let ((tag (if (and
+                  buffer-read-only
+                  (not (string-match-p "\\*.*\\*" (buffer-name))))
+                 "r"
+               "")))
+    (propertize tag
+                'help-echo "read only"
+                'face
+                'cloud-line-readonly)))
+
+(defun cloud-line--modified ()
+  "Display modified indicator."
+  (let ((tag (if (and
+                  (buffer-modified-p (current-buffer))
+                  (not (string-match-p "\\*.*\\*" (buffer-name))))
+                 "+"
+               "")))
+    (propertize tag 'face 'cloud-line-modified)))
+
+;; Position
+
+(defun cloud-line--position ()
   "Display position in buffer."
-  '(:eval (let ((f (if (cloud-line-selected-window-active-p)
-                       'cloud-line-position-active
-                     'cloud-line-position-inactive)))
-            (list
-             (propertize "%l" 'face f)
-             ":"
-             (propertize "%c" 'face f)))))
+  (let ((f (if (cloud-line-selected-window-active-p)
+               'cloud-line-position-active
+             'cloud-line-position-inactive)))
+    (list
+     (propertize "%l" 'face f)
+     ":"
+     (propertize "%c" 'face f))))
+
+(defun cloud-line--eol ()
+  "Display EOL of the buffer."
+  (pcase (coding-system-eol-type buffer-file-coding-system)
+    (0 "LF")
+    (1 "CRLF")
+    (2 "CR")))
+
+(defun cloud-line--encoding ()
+  "Display encoding of the buffer."
+  (let ((sys (coding-system-plist buffer-file-coding-system)))
+    (cond ((memq (plist-get sys :category) '(coding-category-undecided coding-category-utf-8))
+           "utf-8")
+          (t (symbol-name (plist-get sys :name))))))
 
 ;; Flycheck
 
@@ -620,17 +662,25 @@
                          (let-alist (flycheck-count-errors flycheck-current-errors)
                            (let ((sum (+ (or .error 0) (or .warning 0))))
                              (concat
-                              "issues: "
+                              "☒:"
                               (number-to-string sum))))
-                       "✔ good"))
-          ('running "● checking")
+                       "☑ good"))
+          ('running "⟲ checking")
           ('no-checker "")
-          ('errored "✖ error")
-          ('interrupted "@ paused"))))
+          ('errored "⛐ error")
+          ('interrupted "⛔ paused"))))
 
 (defun cloud-line-flycheck-segment ()
   "Displays color-coded flycheck information in the mode-line (if available)."
   '(:eval cloud-line--flycheck-state))
+
+(defvar cloud-line-default-mode-line-format mode-line-format
+  "Default format for mode line.")
+
+(defun cloud-line-default ()
+  "Rollback to default mode line."
+  (interactive)
+  (setq-default mode-line-format cloud-line-default-mode-line-format))
 
 ;;;###autoload
 (defun cloud-theme-mode-line ()
@@ -655,23 +705,23 @@
                              :box (:line-width 1 :color "#f2f2f2")))))
      ))
   (setq-default mode-line-format
-                (list
-                 "%e"
-                 (cloud-line--evil-segment)
-                 (cloud-line-file-size-segment)
-                 " "
-                 (cloud-line--file-name-segment)
-                 (cloud-line-readonly-state-segment)
-                 (cloud-line-modified-state-segment)
-                 " "
-                 (cloud-line-position-segment)
-                 " "
-                 (cloud-line-vc-segment)
-                 " "
-                 (cloud-line-flycheck-segment)
-                 " "
-                 (cloud-line-align-right)
-                 (cloud-line-major-mode-segment))))
+                '((:eval
+                   (cloud-line--format
+                    ;; left
+                    (format-mode-line
+                     '((:eval (cloud-line--evil))
+                       (:eval (cloud-line--file-name))
+                       " "
+                       (:eval (cloud-line--vc))))
+                    (format-mode-line
+                     '((:eval (cloud-line--position))
+                       " "
+                       (:eval (cloud-line--encoding))
+                       " "
+                       (:eval (cloud-line--eol))
+                       " "
+                       (:eval (cloud-line--major-mode))
+                       " ")))))))
 
 ;;;###autoload
 (and load-file-name
