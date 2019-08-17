@@ -659,13 +659,20 @@ Requires evil-mode to be enabled."
         (pcase status
           ('finished (if flycheck-current-errors
                          (let-alist (flycheck-count-errors flycheck-current-errors)
-                           (let ((sum (+ (or .error 0) (or .warning 0))))
+                           (let* ((errors (or .error 0))
+                                  (warnings (or .warning 0)))
                              (concat
-                              "✖:"
-                              (number-to-string sum))))
-                       "✔ good"))
+                              (propertize "●" 'help-echo "warnings" 'face 'warning)
+                              " "
+                              (number-to-string warnings)
+                              " "
+                              (propertize "●" 'help-echo "errors" 'face 'error)
+                              " "
+                              (number-to-string errors)
+                              )))
+                       (propertize "✔" 'help-echo "good" 'face 'success)))
           ('running "⟲ checking")
-          ('no-checker "")
+          ('no-checker "⍻ no checker")
           ('errored "⛐ error")
           ('interrupted "⛔ paused"))))
 
