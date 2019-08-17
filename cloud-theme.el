@@ -583,10 +583,9 @@ Requires evil-mode to be enabled."
 
 (defun cloud-line--vc ()
   "Display VC state."
-  (when (vc-mode)
+  (when (and vc-mode buffer-file-name)
     (list
-     "git:"
-     (propertize (substring vc-mode 5)
+     (propertize (format-mode-line '(vc-mode vc-mode))
                  'face
                  (if (cloud-line-selected-window-active-p)
                      'cloud-line-vc-active
@@ -662,17 +661,17 @@ Requires evil-mode to be enabled."
                          (let-alist (flycheck-count-errors flycheck-current-errors)
                            (let ((sum (+ (or .error 0) (or .warning 0))))
                              (concat
-                              "☒:"
+                              "✖:"
                               (number-to-string sum))))
-                       "☑ good"))
+                       "✔ good"))
           ('running "⟲ checking")
           ('no-checker "")
           ('errored "⛐ error")
           ('interrupted "⛔ paused"))))
 
-(defun cloud-line-flycheck-segment ()
+(defun cloud-line--flycheck ()
   "Displays color-coded flycheck information in the mode-line (if available)."
-  '(:eval cloud-line--flycheck-state))
+  cloud-line--flycheck-state)
 
 (defvar cloud-line-default-mode-line-format mode-line-format
   "Default format for mode line.")
@@ -712,7 +711,10 @@ Requires evil-mode to be enabled."
                      '((:eval (cloud-line--evil))
                        (:eval (cloud-line--file-name))
                        " "
-                       (:eval (cloud-line--vc))))
+                       (:eval (cloud-line--vc))
+                       " "
+                       (:eval (cloud-line--flycheck))
+                       ))
                     (format-mode-line
                      '((:eval (cloud-line--position))
                        " "
