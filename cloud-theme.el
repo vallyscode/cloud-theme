@@ -601,7 +601,7 @@
   (let ((tag (if (and
                   buffer-read-only
                   (not (string-match-p "\\*.*\\*" (buffer-name))))
-                 "r"
+                 (char-to-string #x26bf)
                "")))
     (propertize tag
                 'help-echo "read only"
@@ -611,7 +611,7 @@
 (defcloudline cloudline--modified
   (let ((tag (if (and (buffer-modified-p (current-buffer))
                       (not (string-match-p "\\*.*\\*" (buffer-name))))
-                 "+"
+                 (char-to-string #x2710)
                "")))
     (propertize tag 'face 'cloud-line-modified)))
 
