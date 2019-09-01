@@ -350,41 +350,41 @@
 
 ;; Utils
 
-(defvar cloud-line-selected-window (frame-selected-window)
+(defvar cloudline-selected-window (frame-selected-window)
   "Selected window.")
 
-(defun cloud-line-selected-window-active-p ()
+(defun cloudline-selected-window-active-p ()
   "`TRUE' if selected window is active."
-  (eq cloud-line-selected-window (selected-window)))
+  (eq cloudline-selected-window (selected-window)))
 
-(defun cloud-line-set-selected-window ()
+(defun cloudline-set-selected-window ()
   "Set the variable."
   (when (not (minibuffer-window-active-p (frame-selected-window)))
-    (setq cloud-line-selected-window (frame-selected-window))
+    (setq cloudline-selected-window (frame-selected-window))
     (force-mode-line-update)))
 
-(defun cloud-line-unset-selected-window ()
+(defun cloudline-unset-selected-window ()
   "Unset the variable."
-  (setq cloud-line-selected-window nil)
+  (setq cloudline-selected-window nil)
   (force-mode-line-update))
 
-(add-hook 'window-configuration-change-hook 'cloud-line-set-selected-window)
-(add-hook 'buffer-list-update-hook 'cloud-line-set-selected-window)
+(add-hook 'window-configuration-change-hook 'cloudline-set-selected-window)
+(add-hook 'buffer-list-update-hook 'cloudline-set-selected-window)
 (with-no-warnings
-  (add-hook 'focus-in-hook 'cloud-line-set-selected-window)
-  (add-hook 'focus-out-hook 'cloud-line-unset-selected-window))
+  (add-hook 'focus-in-hook 'cloudline-set-selected-window)
+  (add-hook 'focus-out-hook 'cloudline-unset-selected-window))
 
 
 
 
-(defun cloud-line-align-right ()
+(defun cloudline-align-right ()
   "Put some spaces to align right."
   '(:eval (propertize
            " " 'display
            `((space :align-to (- (+ right right-fringe right-margin)
                                  ,(+ 2 (string-width mode-name))))))))
 
-(defun cloud-line--format (left right)
+(defun cloudline--format (left right)
   "Return a string of `window-width' length with aligned `LEFT' and `RIGHT' segments."
   (let ((right-length (length right)))
     (when (and (display-graphic-p) (eq 'right (get-scroll-bar-mode)))
@@ -402,126 +402,126 @@
 ;;
 ;; Faces
 
-(defface cloud-line-evil-normal-active
+(defface cloudline-evil-normal-active
   '((t :foreground "#388e3c"
        :weight bold
        :height 1.0))
   "Face for evil normal state active.")
 
-(defface cloud-line-evil-normal-inactive
+(defface cloudline-evil-normal-inactive
   '((t :foreground "#a7cf42"
        :weight bold
        :height 1.0))
   "Face for evil normal state inactive.")
 
-(defface cloud-line-evil-insert-active
+(defface cloudline-evil-insert-active
   '((t :foreground "#d0372d"
        :weight bold
        :height 1.0))
   "Face for evil insert state active.")
 
-(defface cloud-line-evil-insert-inactive
+(defface cloudline-evil-insert-inactive
   '((t :foreground "#ff9999"
        :weight bold
        :height 1.0))
   "Face for evil insert state inactive.")
 
-(defface cloud-line-evil-visual-active
+(defface cloudline-evil-visual-active
   '((t :foreground "#008abc"
        :weight bold
        :height 1.0))
   "Face for evil visual state active.")
 
-(defface cloud-line-evil-visual-inactive
+(defface cloudline-evil-visual-inactive
   '((t :foreground "#8dd0eb"
        :weight bold
        :height 1.0))
   "Face for evil visual state inactive.")
 
-(defface cloud-line-evil-replace-active
+(defface cloudline-evil-replace-active
   '((t :foreground "#c06600"
        :weight bold
        :height 1.0))
   "Face for evil replace state active.")
 
-(defface cloud-line-evil-replace-inactive
+(defface cloudline-evil-replace-inactive
   '((t :foreground "#f0d97a"
        :weight bold
        :height 1.0))
   "Face for evil replace state inactive.")
 
-(defface cloud-line-evil-emacs-active
+(defface cloudline-evil-emacs-active
   '((t :foreground "#6c4ca8"
        :weight bold
        :height 1.0))
   "Face for evil emacs state active.")
 
-(defface cloud-line-evil-emacs-inactive
+(defface cloudline-evil-emacs-inactive
   '((t :foreground "#b48cff"
        :weight bold
        :height 1.0))
   "Face for evil emacs state inactive.")
 
-(defface cloud-line-file-name-active
+(defface cloudline-file-name-active
   '((t :foreground "#00638a"
        :weight bold))
   "Face for buffer file name active.")
 
-(defface cloud-line-file-name-inactive
+(defface cloudline-file-name-inactive
   '((t :foreground "#8dd0eb"
        :weight bold))
   "Face for buffer file name inactive.")
 
-(defface cloud-line-major-mode-active
+(defface cloudline-major-mode-active
   '((t :foreground "#6c4ca8"
        :weight bold
        :height 1.0))
   "Face for major mode name active.")
 
-(defface cloud-line-major-mode-inactive
+(defface cloudline-major-mode-inactive
   '((t :foreground "#b48cff"
        :weight bold
        :height 1.0))
   "Face for major mode name inactive.")
 
-(defface cloud-line-vc-active
+(defface cloudline-vc-active
   '((t :foreground "#5e8203"
        :weight normal
        :slant italic))
   "Face for VC state active.")
 
-(defface cloud-line-vc-inactive
+(defface cloudline-vc-inactive
   '((t :foreground "#a7cf42"
        :weight normal
        :slant italic))
   "Face for VC state inactive.")
 
-(defface cloud-line-file-size-active
+(defface cloudline-file-size-active
   '((t :foreground "#cc6d00"
        :weight normal))
   "Face for file size active buffer.")
 
-(defface cloud-line-file-size-inactive
+(defface cloudline-file-size-inactive
   '((t :foreground "#f0d97a"
        :weight normal))
   "Face for file size inactive buffer.")
 
-(defface cloud-line-readonly
+(defface cloudline-readonly
   '((t :weight normal))
   "Face for rean only buffer indication."
-  :group 'cloud-line)
+  :group 'cloudline)
 
-(defface cloud-line-modified
+(defface cloudline-modified
   '((t :weight normal))
   "Face for modified buffer indication."
-  :group 'cloud-line)
+  :group 'cloudline)
 
-(defface cloud-line-position-active
+(defface cloudline-position-active
   '((t :foreground "#cc6d00"
        :weight normal))
   "Face for position in active buffer.")
 
-(defface cloud-line-position-inactive
+(defface cloudline-position-inactive
   '((t :foreground "#f0d97a"
        :weight normal))
   "Face for position in inactive buffer.")
@@ -551,51 +551,51 @@
 
 (defcloudline cloudline--evil
   (when (bound-and-true-p evil-local-mode)
-    (let ((active (cloud-line-selected-window-active-p))
+    (let ((active (cloudline-selected-window-active-p))
           (tag (evil-state-property evil-state :tag t)))
       (propertize tag 'face
                   (if active
-                      (cond ((evil-normal-state-p) 'cloud-line-evil-normal-active)
-                            ((evil-insert-state-p) 'cloud-line-evil-insert-active)
-                            ((evil-motion-state-p) 'cloud-line-evil-normal-active)
-                            ((evil-visual-state-p) 'cloud-line-evil-visual-active)
-                            ((evil-operator-state-p) 'cloud-line-evil-normal-active)
-                            ((evil-replace-state-p) 'cloud-line-evil-replace-active)
-                            ((evil-emacs-state-p) 'cloud-line-evil-emacs-active))
-                    'cloud-line-evil-emacs-inactive)))))
+                      (cond ((evil-normal-state-p) 'cloudline-evil-normal-active)
+                            ((evil-insert-state-p) 'cloudline-evil-insert-active)
+                            ((evil-motion-state-p) 'cloudline-evil-normal-active)
+                            ((evil-visual-state-p) 'cloudline-evil-visual-active)
+                            ((evil-operator-state-p) 'cloudline-evil-normal-active)
+                            ((evil-replace-state-p) 'cloudline-evil-replace-active)
+                            ((evil-emacs-state-p) 'cloudline-evil-emacs-active))
+                    'cloudline-evil-emacs-inactive)))))
 
 (defcloudline cloudline--file-name
   (propertize "%b"
               'help-echo (buffer-file-name)
               'face
-              (if (cloud-line-selected-window-active-p)
-                  'cloud-line-file-name-active
-                'cloud-line-file-name-inactive)))
+              (if (cloudline-selected-window-active-p)
+                  'cloudline-file-name-active
+                'cloudline-file-name-inactive)))
 
 (defcloudline cloudline--major-mode
   (propertize "%m"
               'help-echo "major mode name"
               'face
-              (if (cloud-line-selected-window-active-p)
-                  'cloud-line-major-mode-active
-                'cloud-line-major-mode-inactive)))
+              (if (cloudline-selected-window-active-p)
+                  'cloudline-major-mode-active
+                'cloudline-major-mode-inactive)))
 
 (defcloudline cloudline--vc
   (when (and vc-mode buffer-file-name)
     (list
      (propertize (format-mode-line '(vc-mode vc-mode))
                  'face
-                 (if (cloud-line-selected-window-active-p)
-                     'cloud-line-vc-active
-                   'cloud-line-vc-inactive)))))
+                 (if (cloudline-selected-window-active-p)
+                     'cloudline-vc-active
+                   'cloudline-vc-inactive)))))
 
 (defcloudline cloudline--file-size
   (propertize "%I"
               'help-echo "file size"
               'face
-              (if (cloud-line-selected-window-active-p)
-                  'cloud-line-file-size-active
-                'cloud-line-file-size-inactive)))
+              (if (cloudline-selected-window-active-p)
+                  'cloudline-file-size-active
+                'cloudline-file-size-inactive)))
 
 (defcloudline cloudline--readonly
   (let ((tag (if (and
@@ -606,19 +606,19 @@
     (propertize tag
                 'help-echo "read only"
                 'face
-                'cloud-line-readonly)))
+                'cloudline-readonly)))
 
 (defcloudline cloudline--modified
   (let ((tag (if (and (buffer-modified-p (current-buffer))
                       (not (string-match-p "\\*.*\\*" (buffer-name))))
                  (char-to-string #x2710)
                "")))
-    (propertize tag 'face 'cloud-line-modified)))
+    (propertize tag 'face 'cloudline-modified)))
 
 (defcloudline cloudline--position
-  (let ((f (if (cloud-line-selected-window-active-p)
-               'cloud-line-position-active
-             'cloud-line-position-inactive)))
+  (let ((f (if (cloudline-selected-window-active-p)
+               'cloudline-position-active
+             'cloudline-position-inactive)))
     (list
      (propertize "%l" 'face f)
      ":"
@@ -638,11 +638,11 @@
 
 (declare-function flycheck-count-errors "flycheck" (errors))
 (defvar flycheck-current-errors)
-(defvar-local cloud-line--flycheck-state nil)
+(defvar-local cloudline--flycheck-state nil)
 
-(defun cloud-line--flycheck-segment (&optional status)
+(defun cloudline--flycheck-segment (&optional status)
   "Display flycheck `STATUS'."
-  (setq cloud-line--flycheck-state
+  (setq cloudline--flycheck-state
         (pcase status
           ('finished (if flycheck-current-errors
                          (let-alist (flycheck-count-errors flycheck-current-errors)
@@ -659,20 +659,20 @@
                               )))
                        (propertize "✔" 'help-echo "good" 'face 'success)))
           ('running "⟲ checking")
-          ('no-checker "⍻ no checker")
-          ('errored "⛐ error")
-          ('interrupted "⛔ paused"))))
+          ('no-checker "? no checker")
+          ('errored "! error")
+          ('interrupted "! paused"))))
 
 (defcloudline cloudline--flycheck
-  cloud-line--flycheck-state)
+  cloudline--flycheck-state)
 
-(defvar cloud-line-default-mode-line-format mode-line-format
+(defvar cloudline-default-mode-line-format mode-line-format
   "Default format for mode line.")
 
-(defun cloud-line-default ()
+(defun cloudline-default ()
   "Rollback to default mode line."
   (interactive)
-  (setq-default mode-line-format cloud-line-default-mode-line-format))
+  (setq-default mode-line-format cloudline-default-mode-line-format))
 
 ;;;###autoload
 (defun cloud-theme-mode-line ()
@@ -680,8 +680,8 @@
   (interactive)
 
   ;; Setup flycheck hooks
-  (add-hook 'flycheck-status-changed-functions #'cloud-line--flycheck-segment)
-  (add-hook 'flycheck-mode-hook #'cloud-line--flycheck-segment)
+  (add-hook 'flycheck-status-changed-functions #'cloudline--flycheck-segment)
+  (add-hook 'flycheck-mode-hook #'cloudline--flycheck-segment)
 
   (let ((class '((class color) (min-colors 89))))
     (custom-set-faces
@@ -698,7 +698,7 @@
      ))
   (setq-default mode-line-format
                 '((:eval
-                   (cloud-line--format
+                   (cloudline--format
                     ;; left
                     (format-mode-line
                      '(
