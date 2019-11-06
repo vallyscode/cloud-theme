@@ -47,7 +47,7 @@
    'cloud
    `(default ((,class (:background "#f2f2f2" :foreground "#454545"))))
 
-   ;; highlight
+
    `(cursor ((,class (:background "#00638a" :foreground "#f2f2f2" ))))
    `(fringe ((,class (:background "#f2f2f2" :foreground "#454545"  ))))
    `(border ((,class (:foreground "#2f7e9d"))))
@@ -66,7 +66,7 @@
    `(show-paren-mismatch ((,class (:background "#cccccc" :foreground "#d0372d"))))
    `(trailing-whitespace ((,class (:foreground "#cccccc" :background "#fffbc4"))))
 
-   ;; UI
+
    `(button ((,class (:underline t :foreground "#2f7e9d"))))
    `(help-argument-name ((,class (:foreground "#2f7e9d"))))
    `(info-menu-star ((,class (:foreground "#2f7e9d"))))
@@ -74,17 +74,15 @@
    `(nobreak-space ((,class (:background "#b48cff"))))
    `(file-name-shadow ((,class (:foreground "#cccccc"))))
 
-   ;; native line numbers from emacs 26
+
    `(line-number ((,class (:background "#f2f2f2" :foreground "#8c8c8c"))))
    `(line-number-current-line ((,class (:background "#f2f2f2" :foreground "#cc6d00"))))
 
-   ;; linum
-   `(linum ((,class (:background "#f2f2f2" :foreground "#8c8c8c"))))
 
-   ;; hlinum
+   `(linum ((,class (:background "#f2f2f2" :foreground "#8c8c8c"))))
    `(linum-highlight-face ((,class (:background "#f2f2f2" :foreground "#8c8c8c"))))
 
-   ;; font lock
+
    `(font-lock-builtin-face ((,class (:foreground "#7d57c2"))))
    `(font-lock-comment-delimiter-face ((,class (:weight normal :foreground "#919aa1"))))
    `(font-lock-comment-face ((,class (:slant italic :weight normal :foreground "#919aa1"))))
@@ -100,7 +98,7 @@
    `(font-lock-variable-name-face ((,class (:weight normal :foreground "#454545"))))
    `(font-lock-warning-face ((,class (:weight bold :foreground "#cc6d00"))))
 
-   ;; mode line
+
    `(mode-line ((,class (:background "#2f7e9d" :foreground "#f2f2f2" :box (:line-width 1 :color "#2f7e9d")))))
    `(mode-line-inactive ((,class (:background "#cccccc" :foreground "#454545" :box (:line-width 1 :color "#cccccc")))))
    `(mode-line-buffer-id ((,class (:weight bold))))
@@ -108,17 +106,17 @@
    `(mode-line-highlight ((,class (:foreground "#fffbc4"))))
    `(header-line ((,class (:background "#2f7e9d" :foreground "#f2f2f2" :box (:line-width 1 :color "#2f7e9d")))))
 
-   ;; error/warning/success
+
    `(error ((,class (:weight bold :foreground "#d0372d"))))
    `(warning ((,class (:weight bold :foreground "#cc6d00"))))
    `(success ((,class (:weight bold :foreground "#2e994c"))))
 
-   ;; escape and prompt
+
    `(minibuffer-prompt ((,class (:weight bold :foreground "#2f7e9d"))))
    `(minibuffer-noticeable-prompt ((,class (:weight bold :foreground "#2f7e9d"))))
    `(escape-glyph ((,class (:weight bold :foreground "#b48cff"))))
 
-   ;; whitespace
+
    `(whitespace-hspace ((,class (:foreground "#cccccc"))))
    `(whitespace-indentation ((,class (:background nil :foreground "#454545"))))
    `(whitespace-line ((,class (:foreground "#e67373" :background "#f2f2f2"))))
@@ -128,19 +126,19 @@
    `(window-divider-first-pixel ((,class (:background "#2f7e9d"))))
    `(window-divider-last-pixel ((,class (:background "#2f7e9d"))))
 
-   ;; link
+
    `(link ((,class (:underline t :foreground "#006c96"))))
    `(link-visited ((,class (:underline t :foreground "#6c4ca8"))))
 
-   ;; dired
+
    `(dired-header ((,class (:weight bold :foreground "#2f7e9d" :background "#f2f2f2"))))
    `(dired-directory ((,class (:weight bold :foreground "#2f7e9d" :background "#f2f2f2"))))
-   `(dired-ignored ((,class (:strike-through t :foreground "#D0372D"))))
-   `(dired-mark ((,class (:foreground "#D0372D" :background "#f2f2f2"))))
-   `(dired-marked ((,class (:foreground "#D0372D" :background "#ffdddd"))))
+   `(dired-ignored ((,class (:strike-through t :foreground "#d0372d"))))
+   `(dired-mark ((,class (:foreground "#d0372d" :background "#f2f2f2"))))
+   `(dired-marked ((,class (:foreground "#d0372d" :background "#ffdddd"))))
    `(dired-symlink ((,class (:foreground "#855dcf"))))
 
-   ;; diff
+
    `(diff-added ((,class (:background "#ddffdd" :foreground "#22863a"))))
    `(diff-removed ((,class (:background "#ffdddd" :foreground "#d0372d"))))
    `(diff-changed ((,class (:background "#f8f1d3" :foreground "#bf7000"))))
@@ -156,7 +154,7 @@
    `(diff-indicator-changed ((,class (:foreground "#bf7000" :background "#f8f1d3"))))
    `(diff-nonexistent ((,class (:foreground "#454545"))))
 
-   ;; ediff
+
    `(ediff-current-diff-A ((,class (:background "#ffdddd"))))
    `(ediff-current-diff-B ((,class (:background "#ddffdd"))))
    `(ediff-current-diff-C ((,class (:background "#f8f1d3"))))
@@ -167,7 +165,7 @@
    `(ediff-odd-diff-A ((,class (:background "#cccccc"))))
    `(ediff-odd-diff-B ((,class (:background "#cccccc"))))
 
-   ;; company
+
    `(company-tooltip-common-selection ((,class (:weight normal :foreground "#f2f2f2"))))
    `(company-tooltip-selection ((,class (:weight normal :foreground "#f2f2f2" :background "#2f7e9d"))))
    `(company-tooltip-annotation-selection ((,class (:weight normal :foreground "eeeeee"))))
@@ -178,53 +176,54 @@
    `(company-scrollbar-bg ((,class (:background "#cccccc"))))
    `(company-scrollbar-fg ((,class (:background "#8c8c8c"))))
 
-   ;; eldoc
+
    `(eldoc-highlight-function-argument ((,class (:foreground "#008abd" :weight bold))))
 
-   ;; haskell
+
    `(haskell-pragma-face ((,class (:foreground "#7d57c2"))))
    `(haskell-keyword-face ((,class (:foreground "#2f7e9d"))))
    `(haskell-operator-face ((,class (:foreground "#d70087"))))
    `(haskell-type-face ((,class (:weight bold :foreground "#008abd"))))
 
-   ;; which-function
+
    `(which-func ((,class (:foreground "#7d57c2"))))
 
-   ;; undo-tree
+
    `(undo-tree-visualizer-current-face ((,class (:foreground "#cc6d00"))))
    `(undo-tree-visualizer-active-branch-face ((,class (:foreground "#b48cff"))))
    `(undo-tree-visualizer-default-face ((,class (:foreground "#6c4ca8"))))
    `(undo-tree-visualizer-register-face ((,class (:foreground "#678f03"))))
    `(undo-tree-visualizer-unmodified-face ((,class (:foreground "#6c7378"))))
 
-   ;; grep
+
    `(grep-context-face ((,class (:foreground "#919aa1"))))
-   `(grep-error-face ((,class (:foreground "#D0372d"))))
+   `(grep-error-face ((,class (:foreground "#d0372D"))))
    `(grep-hit-face ((,class (:foreground "#2f7e9d"))))
    `(grep-match-face ((,class (:foreground nil :background nil :inherit match))))
 
+
    `(regex-tool-matched-face ((,class (:foreground nil :background nil :inherit match))))
 
-   ;; compilation
+
    `(compilation-column-number ((,class (:foreground "#cc6d00"))))
    `(compilation-line-number ((,class (:foreground "#cc6d00"))))
    `(compilation-message-face ((,class (:foreground "#2f7e9d"))))
    `(compilation-mode-line-exit ((,class (:foreground "#2e994c"))))
-   `(compilation-mode-line-fail ((,class (:foreground "#D0372d"))))
+   `(compilation-mode-line-fail ((,class (:foreground "#d0372D"))))
    `(compilation-mode-line-run ((,class (:foreground "#2f7e9d"))))
 
-   ;; flycheck
+
    `(flycheck-info ((,class (:underline (:color "#2e994c" :style wave) :weight bold))))
    `(flycheck-warning ((,class (:underline (:color "#cc6d00" :style wave) :weight bold))))
-   `(flycheck-error ((,class (:underline (:color "#D0372D" :style wave) :weight bold))))
+   `(flycheck-error ((,class (:underline (:color "#d0372d" :style wave) :weight bold))))
    `(flycheck-fringe-info ((,class (:foreground "#2e994c"))))
    `(flycheck-fringe-warning ((,class (:foreground "#cc6d00"))))
-   `(flycheck-fringe-error ((,class (:foreground "#D0372D"))))
+   `(flycheck-fringe-error ((,class (:foreground "#d0372d"))))
    `(flycheck-warning ((,class (:underline (:color "#cc6d00" :style wave)))))
-   `(flycheck-error ((,class (:underline (:color "#D0372D" :style wave)))))
+   `(flycheck-error ((,class (:underline (:color "#d0372d" :style wave)))))
    `(flycheck-error-list-line-number ((,class (:foreground "#7d57c2"))))
 
-   ;; helm
+
    `(helm-M-x-key ((,class (:foreground "#2e994c"))))
    `(helm-action ((,class (:foreground "#454545"))))
    `(helm-header ((,class (:foreground "#f2f2f2" :background "#008abd"))))
@@ -234,12 +233,12 @@
    `(helm-selection ((,class (:background "#cccccc"))))
    `(helm-selection-line ((,class (:background "#f2f2f2"))))
    `(helm-separator ((,class (:foreground "#454545"))))
-   `(helm-visible-mark ((,class (:foreground "#D0372D" :background "#ffdddd"))))
+   `(helm-visible-mark ((,class (:foreground "#d0372d" :background "#ffdddd"))))
    `(helm-buffer-directory ((,class (:foreground "#2f7e9d" :weight normal))))
    `(helm-buffer-file ((,class (:foreground "#454545"))))
    `(helm-buffer-not-saved ((,class (:foreground "#f4ad49"))))
-   `(helm-buffer-process ((,class (:foreground "#D0372D"))))
-   `(helm-buffer-saved-out ((,class (:foreground "#D0372D"))))
+   `(helm-buffer-process ((,class (:foreground "#d0372d"))))
+   `(helm-buffer-saved-out ((,class (:foreground "#d0372d"))))
    `(helm-buffer-size ((,class (:foreground "#cc6d00"))))
    `(helm-candidate-number ((,class (:foreground "#f2f2f2" :background "#cc6d00"))))
    `(helm-ff-directory ((,class (:foreground "#2f7e9d" :weight bold))))
@@ -248,14 +247,14 @@
    `(helm-ff-invalid-symlink ((,class (:foreground "#7d57c2" :background "#ffdddd"))))
    `(helm-ff-symlink ((,class (:foreground "#7d57c2"))))
 
-   ;; which-key
+
    `(which-key-key-face ((,class (:foreground "#7d57c2" :weight bold))))
    `(which-key-special-key-face ((,class (:foreground "#d70087"  :weight bold :height 1.1))))
    `(which-key-command-description-face ((,class (:foreground "#454545" ))))
    `(which-key-group-description-face ((,class (:foreground "#2f7e9d"))))
    `(which-key-separator-face ((,class (:foreground "#919aa1"))))
 
-   ;; rainbow delimiters
+
    `(rainbow-delimiters-depth-1-face ((,class (:foreground "#00638a"))))
    `(rainbow-delimiters-depth-2-face ((,class (:foreground "#7d57c2"))))
    `(rainbow-delimiters-depth-3-face ((,class (:foreground "#008080"))))
@@ -269,7 +268,7 @@
    `(rainbow-delimiters-depth-11-face ((,class (:foreground "#008080"))))
    `(rainbow-delimiters-depth-12-face ((,class (:foreground "#2e994c"))))
 
-   ;; outline
+
    `(outline-1 ((,class (:height 1.3 :weight bold :foreground "#008abd"))))
    `(outline-2 ((,class (:height 1.2 :weight bold :foreground "#7d57c2"))))
    `(outline-3 ((,class (:height 1.1 :weight bold :foreground "#cc6d00"))))
@@ -279,7 +278,7 @@
    `(outline-7 ((,class (:height 1.0 :weight bold :foreground "#008080"))))
    `(outline-8 ((,class (:height 1.0 :weight bold :foreground "#6c7378"))))
 
-   ;; org
+
    `(org-level-1 ((,class (:height 1.3 :weight bold :foreground "#008abd"))))
    `(org-level-2 ((,class (:height 1.2 :weight bold :foreground "#7d57c2"))))
    `(org-level-3 ((,class (:height 1.1 :weight bold :foreground "#cc6d00"))))
@@ -302,17 +301,17 @@
    `(org-date ((,class (:underline t :foreground "#7d57c2"))))
    `(org-document-title ((,class (:height 1.8 :weight bold :foreground "#454545"))))
 
-   ;; highlight numbers
+
    `(highlight-numbers-number ((,class (:foreground "#d75f00"))))
 
-   ;; js2
-   `(js2-error ((,class (:box (:line-width 1 :color "#D0372D") :background "#ffdddd"))))
+
+   `(js2-error ((,class (:box (:line-width 1 :color "#d0372d") :background "#ffdddd"))))
    `(js2-warning ((,class (:underline "#cc6d00"))))
-   `(js2-external-variable ((,class (:foreground "#D0372D"))))
+   `(js2-external-variable ((,class (:foreground "#d0372d"))))
    `(js2-function-param ((,class (:foreground "#008abd"))))
    `(js2-instance-member ((,class (:foreground "#2f7e9d"))))
-   `(js2-jsdoc-html-tag-delimiter ((,class (:foreground "#D0372D"))))
-   `(js2-jsdoc-html-tag-name ((,class (:foreground "#D0372D"))))
+   `(js2-jsdoc-html-tag-delimiter ((,class (:foreground "#d0372d"))))
+   `(js2-jsdoc-html-tag-name ((,class (:foreground "#d0372d"))))
    `(js2-jsdoc-tag ((,class (:weight normal :foreground "#7d57c2"))))
    `(js2-jsdoc-type ((,class (:foreground "#008abd"))))
    `(js2-jsdoc-value ((,class (:weight normal :foreground "#7d57c2"))))
@@ -321,21 +320,21 @@
    `(js2-private-member ((,class (:foreground "#008abd"))))
    `(js2-object-property ((,class (:foreground "#009688"))))
 
-   ;; ivy
+
    `(ivy-current-match ((,class (:background "#cccccc"))))
    `(ivy-minibuffer-match-face-1 ((,class (:background "#f2f2f2"))))
    `(ivy-minibuffer-match-face-2 ((,class (:weight bold :background "#fffbc4"))))
    `(ivy-minibuffer-match-face-3 ((,class (:weight bold :background "#fffbc4"))))
    `(ivy-minibuffer-match-face-4 ((,class (:weight bold :background "#fffbc4"))))
 
-   ;; swiper
+
    `(swiper-line-face ((,class (:background "#f2f2f2"))))
    `(swiper-match-face-1 ((,class (:background "#fffbc4"))))
    `(swiper-match-face-2 ((,class (:background "#fffbc4"))))
    `(swiper-match-face-3 ((,class (:background "#fffbc4"))))
    `(swiper-match-face-4 ((,class (:background "#fffbc4"))))
 
-   ;; cypher
+
    `(cypher-clause-face ((,class (:weight normal :foreground "#00638a"))))
    `(cypher-function-face ((,class (:foreground "#454545"))))
    `(cypher-keyword-face ((,class (:weight bold :foreground "#00638a"))))
@@ -345,26 +344,28 @@
    `(cypher-symbol-face ((,class (:slant italic :foreground "#454545"))))
    `(cypher-variable-face ((,class (:foreground "#454545"))))))
 
+
 ;;
 ;; Cloud mode line
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
 ;; Utils
 
-(defvar cloudline-selected-window (frame-selected-window)
-  "Selected window.")
+(defvar cloudline-selected-window (frame-selected-window) "Selected window.")
 
 (defun cloudline-selected-window-active-p ()
-  "`TRUE' if selected window is active."
+  "Return t if selected window is active."
   (eq cloudline-selected-window (selected-window)))
 
 (defun cloudline-set-selected-window ()
-  "Set the variable."
+  "Set the variable for current selected window."
   (when (not (minibuffer-window-active-p (frame-selected-window)))
     (setq cloudline-selected-window (frame-selected-window))
     (force-mode-line-update)))
 
 (defun cloudline-unset-selected-window ()
-  "Unset the variable."
+  "Unset the variable for current selected window."
   (setq cloudline-selected-window nil)
   (force-mode-line-update))
 
@@ -374,28 +375,19 @@
   (add-hook 'focus-in-hook 'cloudline-set-selected-window)
   (add-hook 'focus-out-hook 'cloudline-unset-selected-window))
 
-
-
-
-(defun cloudline-align-right ()
-  "Put some spaces to align right."
-  '(:eval (propertize
-           " " 'display
-           `((space :align-to (- (+ right right-fringe right-margin)
-                                 ,(+ 2 (string-width mode-name))))))))
+;; Handle mode line alignment
 
 (defun cloudline--format (left right)
   "Return a string of `window-width' length with aligned `LEFT' and `RIGHT' segments."
   (let ((right-length (length right)))
     (when (and (display-graphic-p) (eq 'right (get-scroll-bar-mode)))
       (setq right-length (- right-length 3)))
-    (concat
-     left
-     " "
-     (propertize " "
-                 'display `((space :align-to (- (+ right right-fringe right-margin) ,(+ right-length 0)))))
-     right)))
-
+    (concat left
+            " "
+            (propertize " "
+                        'display
+                        `((space :align-to (- (+ right right-fringe right-margin) ,(+ right-length 0)))))
+            right)))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -553,7 +545,8 @@
   (when (bound-and-true-p evil-local-mode)
     (let ((active (cloudline-selected-window-active-p))
           (tag (evil-state-property evil-state :tag t)))
-      (propertize tag 'face
+      (propertize tag
+                  'face
                   (if active
                       (cond ((evil-normal-state-p) 'cloudline-evil-normal-active)
                             ((evil-insert-state-p) 'cloudline-evil-insert-active)
@@ -564,6 +557,8 @@
                             ((evil-emacs-state-p) 'cloudline-evil-emacs-active))
                     'cloudline-evil-emacs-inactive)))))
 
+;; File name segment
+
 (defcloudline cloudline--file-name
   (propertize "%b"
               'help-echo (buffer-file-name)
@@ -572,13 +567,17 @@
                   'cloudline-file-name-active
                 'cloudline-file-name-inactive)))
 
+;; Major mode segment
+
 (defcloudline cloudline--major-mode
   (propertize "%m"
-              'help-echo "major mode name"
+              'help-echo "Major mode name"
               'face
               (if (cloudline-selected-window-active-p)
                   'cloudline-major-mode-active
                 'cloudline-major-mode-inactive)))
+
+;; Version Control segment
 
 (defcloudline cloudline--vc
   (when (and vc-mode buffer-file-name)
@@ -589,6 +588,8 @@
                      'cloudline-vc-active
                    'cloudline-vc-inactive)))))
 
+;; File size segment
+
 (defcloudline cloudline--file-size
   (propertize "%I"
               'help-echo "file size"
@@ -596,6 +597,8 @@
               (if (cloudline-selected-window-active-p)
                   'cloudline-file-size-active
                 'cloudline-file-size-inactive)))
+
+;; Readonly segment
 
 (defcloudline cloudline--readonly
   (let ((tag (if (and
@@ -608,12 +611,16 @@
                 'face
                 'cloudline-readonly)))
 
+;; Modified segment
+
 (defcloudline cloudline--modified
   (let ((tag (if (and (buffer-modified-p (current-buffer))
                       (not (string-match-p "\\*.*\\*" (buffer-name))))
                  (char-to-string #x2710)
                "")))
     (propertize tag 'face 'cloudline-modified)))
+
+;; Position segment
 
 (defcloudline cloudline--position
   (let ((f (if (cloudline-selected-window-active-p)
@@ -624,17 +631,23 @@
      ":"
      (propertize "%c" 'face f))))
 
+;; End of line segment
+
 (defcloudline cloudline--eol
   (pcase (coding-system-eol-type buffer-file-coding-system)
     (0 "LF")
     (1 "CRLF")
     (2 "CR")))
 
+;; Encoding segment
+
 (defcloudline cloudline--encoding
   (let ((sys (coding-system-plist buffer-file-coding-system)))
     (cond ((memq (plist-get sys :category) '(coding-category-undecided coding-category-utf-8))
            "utf-8")
           (t (symbol-name (plist-get sys :name))))))
+
+;; Flycheck segment
 
 (declare-function flycheck-count-errors "flycheck" (errors))
 (defvar flycheck-current-errors)
@@ -694,35 +707,35 @@
        ((,class (:background "#f2f2f2"
                              :height 120
                              :foreground "#a8b3ba"
-                             :box (:line-width 1 :color "#f2f2f2")))))
-     ))
+                             :box (:line-width 1 :color "#f2f2f2")))))))
   (setq-default mode-line-format
                 '((:eval
                    (cloudline--format
                     ;; left
                     (format-mode-line
-                     '(
-                       (:eval (cloudline--evil))
+                     '((:eval (cloudline--evil))
+                       "❰ "
                        (:eval (cloudline--file-name))
                        (:eval (cloudline--readonly))
                        (:eval (cloudline--modified))
-                       " "
+                       " ❰ "
                        (:eval (cloudline--file-size))
-                       " "
+                       " ❰ "
                        (:eval (cloudline--vc))
-                       " "
+                       " ❰ "
                        (:eval (cloudline--flycheck))
-                       " "
+                       " ❰ "
                        ))
                     (format-mode-line
-                     '((:eval (cloudline--position))
-                       " "
+                     '("❱ "
+                       (:eval (cloudline--position))
+                       "❱"
                        (:eval (cloudline--encoding))
-                       " "
+                       "❱"
                        (:eval (cloudline--eol))
-                       " "
+                       "❱"
                        (:eval (cloudline--major-mode))
-                       " ")))))))
+                       "❱")))))))
 
 ;;;###autoload
 (and load-file-name

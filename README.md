@@ -1,48 +1,55 @@
-cloud-theme
-===========
-
 [![License GPL 3][badge-license]](https://github.com/vallyscode/cloud-theme/blob/master/LICENSE)
 [![MELPA](https://melpa.org/packages/cloud-theme-badge.svg)](https://melpa.org/#/cloud-theme)
 
-Light theme for emacs
+cloud-theme
+===========
 
-## elisp
+> Light theme for Emacs
 
-![Screenshot](elisp.png)
+## Features
 
-## helm
+#### elisp
 
-![Helm](helm.png)
+![Screenshot](images/elisp.png)
 
-## ivy
+#### helm
 
-![ivy](ivy.png)
+![Helm](images/helm.png)
 
-## swiper
+#### ivy
 
-![swiper](swiper.png)
+![ivy](images/ivy.png)
 
-## modeline
+#### swiper
 
-![modeline](modeline.png)
+![swiper](images/swiper.png)
 
-## cypher-mode
+#### modeline
 
-![cypher-mode](cypher-mode.png)
+![modeline](images/modeline.png)
 
-## installation (MELPA)
+#### cypher-mode
 
+![cypher-mode](images/cypher-mode.png)
+
+## Installation
+
+#### Melpa
+
+#### Manual
+
+```
     M-x package-install RET cloud-theme
-
-## setup
-
     (load-theme 'cloud-theme t)
+```
 
-## installation (package-use)
+#### Via use-package
 
+```
     (use-package cloud-theme
         :ensure t
         :config
         (load-theme 'cloud t))
+```
 
 [badge-license]: https://img.shields.io/badge/license-GPL_3-green.svg
