@@ -604,7 +604,7 @@
   (let ((tag (if (and
                   buffer-read-only
                   (not (string-match-p "\\*.*\\*" (buffer-name))))
-                 (char-to-string #x26bf)
+                 (char-to-string ?r)
                "")))
     (propertize tag
                 'help-echo "read only"
@@ -616,7 +616,7 @@
 (defcloudline cloudline--modified
   (let ((tag (if (and (buffer-modified-p (current-buffer))
                       (not (string-match-p "\\*.*\\*" (buffer-name))))
-                 (char-to-string #x2710)
+                 (char-to-string ?*)
                "")))
     (propertize tag 'face 'cloudline-modified)))
 
@@ -714,28 +714,26 @@
                     ;; left
                     (format-mode-line
                      '((:eval (cloudline--evil))
-                       "❰ "
+                       " "
                        (:eval (cloudline--file-name))
                        (:eval (cloudline--readonly))
                        (:eval (cloudline--modified))
-                       " ❰ "
-                       (:eval (cloudline--file-size))
-                       " ❰ "
+                       " "
                        (:eval (cloudline--vc))
-                       " ❰ "
+                       " "
                        (:eval (cloudline--flycheck))
-                       " ❰ "
+                       " "
                        ))
                     (format-mode-line
-                     '("❱ "
+                     '(" "
                        (:eval (cloudline--position))
-                       "❱"
+                       " "
                        (:eval (cloudline--encoding))
-                       "❱"
+                       " "
                        (:eval (cloudline--eol))
-                       "❱"
+                       " "
                        (:eval (cloudline--major-mode))
-                       "❱")))))))
+                       "  ")))))))
 
 ;;;###autoload
 (and load-file-name
