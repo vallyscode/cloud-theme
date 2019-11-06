@@ -1,34 +1,31 @@
 [![License GPL 3][badge-license]](https://github.com/vallyscode/cloud-theme/blob/master/LICENSE)
 [![MELPA](https://melpa.org/packages/cloud-theme-badge.svg)](https://melpa.org/#/cloud-theme)
 
-cloud-theme
-===========
+# Cloud
 
 > Light theme for Emacs
 
-## Features
-
-#### elisp
+## elisp
 
 ![Screenshot](images/elisp.png)
 
-#### helm
+## helm
 
 ![Helm](images/helm.png)
 
-#### ivy
+## ivy
 
 ![ivy](images/ivy.png)
 
-#### swiper
+## swiper
 
 ![swiper](images/swiper.png)
 
-#### modeline
+## modeline
 
 ![modeline](images/modeline.png)
 
-#### cypher-mode
+## cypher-mode
 
 ![cypher-mode](images/cypher-mode.png)
 
