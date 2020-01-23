@@ -37,10 +37,12 @@
 
 ;;; Code:
 
-(deftheme cloud "Cloud light color theme")
-
-(defgroup cloud nil "Cloud theme options."
+(defgroup cloud nil
+  "Cloud theme options."
   :group 'faces)
+
+(deftheme cloud
+  "Cloud light color theme.")
 
 (let ((class '((class color) (min-colors 89))))
   (custom-theme-set-faces
@@ -333,6 +335,18 @@
    `(swiper-match-face-2 ((,class (:background "#fffbc4"))))
    `(swiper-match-face-3 ((,class (:background "#fffbc4"))))
    `(swiper-match-face-4 ((,class (:background "#fffbc4"))))
+
+
+   `(magit-header-line ((,class (:foreground "#f2f2f2"))))
+   `(magit-hash ((,class (:foreground "#008080"))))
+   `(magit-blame-hash ((,class (:foreground "#008080"))))
+   `(magit-blame-name ((,class (:foreground "#008abd" :weight bold))))
+   `(magit-blame-date ((,class (:foreground "#cc6d00"))))
+   `(magit-blame-summary ((,class (:foreground "#678f03" :slant italic))))
+   `(magit-blame-heading ((,class (:background "#e6e6e6"))))
+   `(magit-log-graph ((,class (:foreground "#7d57c2"))))
+   `(magit-log-author ((,class (:foreground "#008abd" :weight bold))))
+   `(magit-log-date ((,class (:foreground "#cc6d00"))))
 
 
    `(cypher-clause-face ((,class (:weight normal :foreground "#00638a"))))
