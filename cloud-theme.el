@@ -219,6 +219,8 @@
 
    `(eglot-mode-line ((,class (:foreground "#f2f2f2" :weight bold))))
 
+   `(xref-file-header ((,class (:weight bold :foreground "#2f7e9d" :background "#f2f2f2"))))
+
    `(flycheck-info ((,class (:underline (:color "#2e994c" :style wave) :weight bold))))
    `(flycheck-warning ((,class (:underline (:color "#cc6d00" :style wave) :weight bold))))
    `(flycheck-error ((,class (:underline (:color "#d0372d" :style wave) :weight bold))))
