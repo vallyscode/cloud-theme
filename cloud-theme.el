@@ -105,8 +105,9 @@
    `(mode-line-inactive ((,class (:background "#cccccc" :foreground "#f2f2f2" :box (:line-width 1 :color "#cccccc")))))
    `(mode-line-buffer-id ((,class (:weight bold))))
    `(mode-line-emphasis ((,class (:foreground "#f2f2f2"))))
-   `(mode-line-highlight ((,class (:foreground "#fffbc4"))))
+   `(mode-line-highlight ((,class (:background "#fffbc4" :foreground "#454545"))))
    `(header-line ((,class (:background "#2f7e9d" :foreground "#f2f2f2" :box (:line-width 1 :color "#2f7e9d")))))
+   `(header-line-highlight ((,class (:background "#fffbc4" :foreground "#454545"))))
 
 
    `(error ((,class (:weight bold :foreground "#d0372d"))))
