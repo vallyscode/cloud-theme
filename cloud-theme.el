@@ -25,7 +25,7 @@
 
 ;; This file is NOT part of GNU Emacs
 
-;;; Commentary:
+;;; Comment:
 
 ;; To use it, put the following in your Emacs configuration file:
 ;;
@@ -51,7 +51,7 @@
 
 
    `(cursor ((,class (:background "#00638a" :foreground "#f2f2f2" ))))
-   `(fringe ((,class (:background "#f2f2f2" :foreground "#454545"  ))))
+   `(fringe ((,class (:background "#e0e0e0" :foreground "#454545"  ))))
    `(border ((,class (:foreground "#2f7e9d"))))
    `(vertical-border ((,class (:foreground "#2f7e9d"))))
    `(highlight ((,class (:background "#fffbc4"))))
@@ -77,8 +77,8 @@
    `(file-name-shadow ((,class (:foreground "#cccccc"))))
 
 
-   `(line-number ((,class (:background "#f2f2f2" :foreground "#8c8c8c"))))
-   `(line-number-current-line ((,class (:background "#f2f2f2" :foreground "#cc6d00"))))
+   `(line-number ((,class (:inherit fringe :foreground "#8c8c8c"))))
+   `(line-number-current-line ((,class (:inherit fringe :foreground "#cc6d00"))))
 
 
    `(linum ((,class (:background "#f2f2f2" :foreground "#8c8c8c"))))
@@ -105,7 +105,7 @@
    `(mode-line-inactive ((,class (:background "#cccccc" :foreground "#f2f2f2" :box (:line-width 1 :color "#cccccc")))))
    `(mode-line-buffer-id ((,class (:weight bold))))
    `(mode-line-emphasis ((,class (:foreground "#f2f2f2"))))
-   `(mode-line-highlight ((,class (:background "#fffbc4" :foreground "#454545"))))
+   `(mode-line-highlight ((,class (:foreground "#fffbc4" :weight bold))))
    `(header-line ((,class (:background "#2f7e9d" :foreground "#f2f2f2" :box (:line-width 1 :color "#2f7e9d")))))
    `(header-line-highlight ((,class (:background "#fffbc4" :foreground "#454545"))))
 
