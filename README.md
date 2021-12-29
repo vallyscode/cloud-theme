@@ -29,6 +29,10 @@
 
 ![cypher-mode](images/cypher-mode.png)
 
+## whitespace-mode
+
+![whitespace-mode](images/whitespace-mode.png)
+
 ## Installation
 
 #### Melpa

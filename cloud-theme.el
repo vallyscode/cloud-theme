@@ -66,7 +66,7 @@
    `(match ((,class (:weight bold :background "#fffbc4"))))
    `(show-paren-match ((,class (:background "#cccccc" :foreground "#2f7e9d"))))
    `(show-paren-mismatch ((,class (:background "#cccccc" :foreground "#d0372d"))))
-   `(trailing-whitespace ((,class (:foreground "#cccccc" :background "#fffbc4"))))
+   `(trailing-whitespace ((,class (:foreground "#d0d0d0" :background "#f2f2f2"))))
 
 
    `(button ((,class (:underline t :foreground "#2f7e9d"))))
@@ -125,6 +125,8 @@
    `(whitespace-line ((,class (:foreground "#e67373" :background "#f2f2f2"))))
    `(whitespace-tab ((,class (:background nil :foreground "#454545"))))
    `(whitespace-trailing ((,class (:background nil :foreground "#e67373"))))
+   `(whitespace-space ((,class (:background nil :foreground "#d0d0d0"))))`
+   `(whitespace-newline ((,class (:background nil :foreground "#d0d0d0"))))`
    `(window-divider ((,class (:background "#2f7e9d"))))
    `(window-divider-first-pixel ((,class (:background "#2f7e9d"))))
    `(window-divider-last-pixel ((,class (:background "#2f7e9d"))))
