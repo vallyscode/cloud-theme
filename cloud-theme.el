@@ -5,6 +5,8 @@
 ;; Author: Valerii Lysenko <vallyscode@gmail.com>
 ;; Maintainer: Valerii Lysenko <vallyscode@gmail.com>
 ;; Keywords: color theme
+;; Package-Version: 20211229.2131
+;; Package-Commit: 72f1f430c94b93701851567853097b2df7cdd19a
 ;; URL: https://github.com/vallyscode/cloud-theme
 ;; Version: 0.1
 ;; Package: cloud-theme
@@ -142,7 +144,6 @@
    `(dired-mark ((,class (:foreground "#d0372d" :background "#f2f2f2"))))
    `(dired-marked ((,class (:foreground "#d0372d" :background "#ffdddd"))))
    `(dired-symlink ((,class (:foreground "#855dcf"))))
-
 
    `(diff-added ((,class (:background "#ddffdd" :foreground "#22863a"))))
    `(diff-removed ((,class (:background "#ffdddd" :foreground "#d0372d"))))
