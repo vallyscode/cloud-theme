@@ -56,16 +56,16 @@
    `(fringe ((,class (:background "#f2f2f2" :foreground "#454545"  ))))
    `(border ((,class (:foreground "#2f7e9d"))))
    `(vertical-border ((,class (:foreground "#2f7e9d"))))
-   `(highlight ((,class (:background "#fffbc4"))))
+   `(highlight ((,class (:background "#ffcc00"))))
    `(region ((,class (:background "#3389ab" :foreground "#f2f2f2"))))
-   `(secondary-selection ((,class (:weight bold :background "#fffbc4"))))
+   `(secondary-selection ((,class (:weight bold :background "#ffcc00"))))
    `(isearch ((,class (:foreground "#f2f2f2" :background "#008abd"))))
    `(isearch-fail ((,class (:weight bold :foreground "#f2f2f2" :background "#d0372d"))))
    `(query-replace ((,class (:inherit isearch))))
-   `(lazy-highlight ((,class (:foreground "#454545" :background "#fffbc4")))) ; Isearch others (see `match').
+   `(lazy-highlight ((,class (:foreground "#454545" :background "#ffcc00")))) ; Isearch others (see `match').
    `(hl-line ((,class (:background "#ededed"))))
    `(shadow ((,class ((:foreground "#cccccc")))))
-   `(match ((,class (:weight bold :background "#fffbc4"))))
+   `(match ((,class (:weight bold :background "#ffcc00"))))
    `(show-paren-match ((,class (:background "#cccccc" :foreground "#2f7e9d"))))
    `(show-paren-mismatch ((,class (:background "#cccccc" :foreground "#d0372d"))))
    `(trailing-whitespace ((,class (:foreground "#d0d0d0" :background "#f2f2f2"))))
@@ -107,9 +107,9 @@
    `(mode-line-inactive ((,class (:background "#cccccc" :foreground "#f2f2f2" :box (:line-width 1 :color "#cccccc")))))
    `(mode-line-buffer-id ((,class (:weight bold))))
    `(mode-line-emphasis ((,class (:foreground "#f2f2f2"))))
-   `(mode-line-highlight ((,class (:background "#fffbc4" :foreground "#454545"))))
+   `(mode-line-highlight ((,class (:background "#ffcc00" :foreground "#454545"))))
    `(header-line ((,class (:background "#2f7e9d" :foreground "#f2f2f2" :box (:line-width 1 :color "#2f7e9d")))))
-   `(header-line-highlight ((,class (:background "#fffbc4" :foreground "#454545"))))
+   `(header-line-highlight ((,class (:background "#ffcc00" :foreground "#454545"))))
 
 
    `(error ((,class (:weight bold :foreground "#d0372d"))))
@@ -241,7 +241,7 @@
    `(helm-header ((,class (:foreground "#f2f2f2" :background "#008abd"))))
    `(helm-moccur-buffer ((,class (:foreground "#454545" :background "#cfd8dc"))));;highlight moccur buffer name
    `(helm-source-header ((,class (:foreground "#454545" :background "#cfd8dc" :height 1.3 :bold t))))
-   `(helm-match ((,class (:foreground "#454545" :background "#fffbc4"))))
+   `(helm-match ((,class (:foreground "#454545" :background "#ffcc00"))))
    `(helm-selection ((,class (:background "#cccccc"))))
    `(helm-selection-line ((,class (:background "#f2f2f2"))))
    `(helm-separator ((,class (:foreground "#454545"))))
