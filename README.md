@@ -33,6 +33,10 @@
 
 ![whitespace-mode](images/whitespace-mode.png)
 
+## diredfl-mode
+
+![diredfl-mode](images/diredfl-mode.png)
+
 ## Installation
 
 #### Melpa
