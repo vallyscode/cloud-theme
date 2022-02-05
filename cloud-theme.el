@@ -142,6 +142,22 @@
    `(dired-mark ((,class (:foreground "#d0372d" :background "#f2f2f2"))))
    `(dired-marked ((,class (:foreground "#d0372d" :background "#ffdddd"))))
    `(dired-symlink ((,class (:foreground "#855dcf"))))
+   `(dired-special ((,class (:foreground "#d0372d" :background "#ffdddd"))))
+
+
+   `(diredfl-number ((,class (:foreground "#cc6d00" :background "#f2f2f2"))))
+   `(diredfl-date-time ((,class (:slant italic :foreground "#8c8c8c" :background "#f2f2f2"))))
+   `(diredfl-write-priv ((,class (:weight bold :foreground "#d0372d" :background "#f2f2f2"))))
+   `(diredfl-read-priv ((,class (:weight bold :foreground "#22863a" :background "#f2f2f2"))))
+   `(diredfl-exec-priv ((,class (:weight bold :foreground "#855dcf" :background "#f2f2f2"))))
+   `(diredfl-dir-heading ((,class (:foreground "#2f7e9d" :background "#f2f2f2"))))
+   `(diredfl-dir-name ((,class (:foreground "#2f7e9d" :background "#f2f2f2"))))
+   `(diredfl-file-name ((,class (:foreground "#454545" :background "#f2f2f2"))))
+   `(diredfl-file-suffix ((,class (:foreground "#454545" :background "#f2f2f2"))))
+   `(diredfl-no-priv ((,class (:foreground "#454545" :background "#f2f2f2"))))
+   `(diredfl-dir-priv ((,class (:foreground "#6c7378" :background "#f2f2f2"))))
+   `(diredfl-link-priv ((,class (:foreground "#855dcf" :background "#f2f2f2"))))
+   `(diredfl-rare-priv ((,class (:foreground "#d70087" :background "#f2f2f2"))))
 
 
    `(diff-added ((,class (:background "#ddffdd" :foreground "#22863a"))))
